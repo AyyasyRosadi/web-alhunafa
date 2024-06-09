@@ -18,10 +18,7 @@ export default function Header() {
                 <li className='cursor-pointer' onClick={() => navigation.push('/about-us')}>عن المؤسسة</li>
                 <li className='cursor-pointer' onClick={() => navigation.push('/')}>الرئسية</li>
             </ul>
-            <div className='md:hidden block text-white'>
-                <BsViewStacked className='w-5 h-5' onClick={() => setShowMenuMobile(!showMenuMobile)} />
-            </div>
-            <div className={`fixed z-50 top-0 w-[80vw] h-screen transition-all ease-in-out duration-300 bg-white font-bahij p-2 ${showMenuMobile ? 'left-0' : '-left-[80vw]'}`}>
+            <div className={`fixed z-50 top-0 w-[70vw] h-screen transition-all ease-in-out duration-300 bg-white font-bahij p-2 ${showMenuMobile ? 'right-0' : '-right-[70vw]'}`}>
                 <div className='flex justify-end items-center gap-3'>
                     <h1>خيار</h1>
                     <MdOutlineClose className='w-7 h-7' onClick={() => setShowMenuMobile(false)} />
@@ -37,8 +34,10 @@ export default function Header() {
                     }}>عن المؤسسة</li>
                 </ul>
             </div>
-            <Image className='md:w-[5%] w-[12%]  transition-all ease-out duration-300 rounded-full hover:scale-125 cursor-pointer' src={showHeader ? WhiteLogo : Logo} alt='' onClick={() => navigation.push('/#1')} />
-
+            <Image className='md:w-[5%] w-[18%]  transition-all ease-out duration-300 rounded-full hover:scale-125 cursor-pointer' src={showHeader ? WhiteLogo : Logo} alt='' onClick={() => navigation.push('/#1')} />
+            <div className='md:hidden block text-white'>
+                <BsViewStacked className='w-5 h-5' onClick={() => setShowMenuMobile(!showMenuMobile)} />
+            </div>
         </div>
     )
 }
