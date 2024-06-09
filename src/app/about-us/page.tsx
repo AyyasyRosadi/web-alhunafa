@@ -17,7 +17,7 @@ export default function Page() {
                 <div className='flex md:flex-row flex-col-reverse justify-between items-center w-[100%] h-[60%] gap-5'>
                     <div className='md:text-xl font-light'>
                         مؤسسة الحنفاء لومبوك بمحافظة نوسا تنجارى الغربية تأسست عام 2002 م الموافق 1423 هـ في مدينة ماتارام جزيرة لومبوك محافطة نوسا تنجارى الغربية حمهورية إندونيسيا.
-                        في بداية انطلاقها أسست معهدا دراسيا تحت مسمى "معهد أبو هريرة الإسلامي" ثم حصلت على اعتماد من قبل وزارة الخارجية الكويتية تحت رقم 3560 عام 2019 م
+                        في بداية انطلاقها أسست معهدا دراسيا تحت مسمى &quot;معهد أبو هريرة الإسلامي&quot; ثم حصلت على اعتماد من قبل وزارة الخارجية الكويتية تحت رقم 3560 عام 2019 م
                     </div>
                     <Image placeholder="blur" className="-z-10 object-cover md:w-[40%] w-[100%] rounded-lg" src={Yayasan} alt="" />
                 </div>

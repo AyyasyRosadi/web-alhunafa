@@ -22,7 +22,7 @@ export default function Footer() {
             <div className='md:w-[33%] flex justify-center items-end flex-col text-right'>
                 <h1 className='md:text-[30px] text-[20xp] text-right'>القائمة الرئيسية</h1>
                 <h1 className='md:text-[15px] text-[10px]'>مدينة ماتارام جزيرة لومبوك محافطة نوسا تنجارى الغربية حمهورية إندونيسيا.
-                    في بداية انطلاقها أسست معهدا دراسيا تحت مسمى "معهد أبو هريرة الإسلامي" ثم حصلت على اعتماد من قبل وزارة الخارجية الكويتية تحت رقم 3560 عام 2019 م</h1>
+                    في بداية انطلاقها أسست معهدا دراسيا تحت مسمى &quot;معهد أبو هريرة الإسلامي&quot; ثم حصلت على اعتماد من قبل وزارة الخارجية الكويتية تحت رقم 3560 عام 2019 م</h1>
             </div>
             <div className='md:w-[33%] flex justify-end items-center'>
                 <Image placeholder='blur' loading='lazy' className='w-[45%] transition-all ease-out duration-300 rounded-full hover:scale-110 cursor-pointer' src={Logo} alt='' onClick={()=>navigation.push('/#1')} />
