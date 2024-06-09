@@ -6,7 +6,7 @@ import Yayasan from "@/assets/images/yayasan.jpg"
 
 export default function Page() {
     return (
-        <div className='font-bahij'>
+        <div className='font-bahij overflow-x-hidden'>
             <section className="relative w-[100vw] h-[100vh] flex justify-center items-center object-cover">
                 <Image placeholder="blur" className="absolute -z-10 object-cover w-[100vw] h-[100vh]" src={Buildings} alt="" />
                 <div className="absolute w-[100vw] h-[100vh] bg-black bg-opacity-20 -z-10"></div>
