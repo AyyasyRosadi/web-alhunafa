@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'majala';
+    src: url('./majalla.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'bahij';
+    src: url('./Bahij_TheSansArabic-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'skrhead';
+    src: url('./SKR-HEAD1.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
