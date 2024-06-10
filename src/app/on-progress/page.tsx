@@ -14,7 +14,7 @@ interface ProjectImplementedAttributes {
 export default function Page() {
     return (
         <div className='font-bahij overflow-x-hidden'>
-            <LandingPage image={Onprogress} title='أثناء التطوير' />
+            <LandingPage image={Onprogress} title='تكتمل قريبا' />
             <section className='p-[5%] flex flex-wrap justify-end items-center gap-5'>
                 {projects?.map((value: ProjectImplementedAttributes, id: number) => (
                     <Card key={id} src={value.image} title={value.title}>

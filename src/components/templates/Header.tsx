@@ -16,7 +16,7 @@ export default function Header() {
         <div className={`fixed top-0 z-50 w-[100vw] flex md:justify-end justify-between gap-10 py-5 px-[10%] items-center ${showHeader ? 'bg-base' : 'bg-transparent'} transition-colors ease-out duration-300`}>
             <ul className={`font-bahij md:flex gap-10 md:text-lg text-xs hidden ${showHeader ? 'text-white' : 'text-base'} transition-colors ease-in-out duration-300`}>
                 <li className='cursor-pointer' onClick={() => navigation.push('/about-us')}>عن المؤسسة</li>
-                <li className='cursor-pointer' onClick={() => navigation.push('/')}>الرئسية</li>
+                <li className='cursor-pointer' onClick={() => navigation.push('/')}>الرئيسية</li>
             </ul>
             <div className={`fixed z-50 top-0 w-[70vw] h-screen transition-all ease-in-out duration-300 bg-white font-bahij p-2 ${showMenuMobile ? 'right-0' : '-right-[70vw]'}`}>
                 <div className='flex justify-end items-center gap-3'>
@@ -27,7 +27,7 @@ export default function Header() {
                     <li className='cursor-pointer' onClick={() => {
                         navigation.push('/')
                         setShowMenuMobile(false)
-                    }}>الرئسية</li>
+                    }}>الرئيسية</li>
                     <li className='cursor-pointer' onClick={() => {
                         navigation.push('/about-us')
                         setShowMenuMobile(false)
