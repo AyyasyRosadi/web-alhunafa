@@ -6,6 +6,7 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 import { useState } from "react";
+import MarkerPosition from "./Marker";
 const containerStyle = {
   width: "100%",
   height: "100%",
@@ -24,6 +25,9 @@ const options = {
   zoom: 9,
 };
 
+
+
+
 export default function Map(props: any) {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -39,13 +43,16 @@ export default function Map(props: any) {
     setSelectedMarker(null);
   };
 
+  
+
   return isLoaded ? (
     <GoogleMap mapContainerStyle={containerStyle} options={options}>
       {props.markers.map((marker: any, index: number) => (
-        <Marker
+        <MarkerPosition
           key={index}
           position={marker.position}
           onClick={()=>onMarkerClick(marker)}
+          icon={marker.type}
         />
       ))}
       {
