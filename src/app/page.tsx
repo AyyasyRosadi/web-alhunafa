@@ -33,7 +33,7 @@ export default function Home() {
         </div>
       </section>
       <section id="4" className="h-[100vh] flex flex-col justify-center items-center gap-7 bg-white">
-        <h1 className="md:text-4xl text-xl">خريطة المشروع</h1>
+        <h1 className="md:text-4xl text-xl text-base">خريطة المشروع</h1>
         <div className="w-[90%] h-[80%] rounded-3xl flex md:flex-row flex-col justify-center items-center">
           <Map markers={markers} />
         </div>
