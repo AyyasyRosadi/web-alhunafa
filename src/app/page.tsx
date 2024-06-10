@@ -9,6 +9,15 @@ import { GiWell } from "react-icons/gi";
 import { FaMosque } from "react-icons/fa";
 import { PiBuildingApartmentFill, PiStudentFill } from "react-icons/pi";
 import { BsFillPeopleFill } from "react-icons/bs";
+import Map from '@/components/templates/Map'
+
+const markers = [
+  {position: {lat:-8.511342672890647,lng:116.09913964667497}, title:"مسجد صهيب الرومي"},
+  {position:{lat:-8.565805151490231, lng:116.62021483068882}, title:"مركز بدر يعقوب الباقر"},
+  {position:{lat:-8.590650258180917, lng:116.113693658673}, title:"مركز فوز الكويت و مركز الدخيل (معهد أبو هريرة الإسلامي)"},
+  {position:{lat:-8.589889104783952, lng:116.09626101071883}, title:"مركز فوز الكويت"},
+  {position:{lat:-8.568904619111844, lng:116.09700632421021}, title:"مركز المعلمة لطيفة محمد فهد المالك"}
+]
 
 export default function Home() {
   return (
@@ -33,7 +42,12 @@ export default function Home() {
         </div>
       </section>
       <section id="4" className="h-[100vh] flex justify-center items-center bg-white">
-        <h1>خريطة</h1>
+        {/* <h1>خريطة</h1> */}
+        <div className="w-[90%] h-[60%] bg-black rounded-3xl flex md:flex-row flex-col justify-center items-center">
+          <Map markers={markers}/>
+        </div>
+
+
       </section>
     </div>
   );
