@@ -1,6 +1,4 @@
 import React from 'react'
-import Mosque from "@/assets/images/icon/mosque.png"
-import Image from 'next/image';
 
 import {Marker} from "@react-google-maps/api"
 

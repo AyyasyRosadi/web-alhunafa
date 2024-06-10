@@ -2,16 +2,13 @@ import Image from 'next/image'
 import React from 'react'
 import Buildings from "@/assets/images/buildings.jpg"
 import Yayasan from "@/assets/images/yayasan.jpg"
+import LandingPage from '@/components/templates/LandingPage'
 
 
 export default function Page() {
     return (
         <div className='font-bahij overflow-x-hidden'>
-            <section className="relative w-[100vw] h-[100vh] flex justify-center items-center object-cover">
-                <Image placeholder="blur" className="absolute -z-10 object-cover w-[100vw] h-[100vh]" src={Buildings} alt="" />
-                <div className="absolute w-[100vw] h-[100vh] bg-black bg-opacity-20 -z-10"></div>
-                <h1 className="md:text-[75px] text-2xl text-white">معلومات عنا</h1>
-            </section>
+            <LandingPage image={Buildings} title='معلومات عنا' />
             <section className="relative w-[100vw] p-[5%] text-right flex flex-col items-end gap-10">
                 <h1 className='md:text-[50px] text-[20px] text-base'>نشاة المؤسسة</h1>
                 <div className='flex md:flex-row flex-col-reverse justify-between items-center w-[100%] h-[60%] gap-5'>
