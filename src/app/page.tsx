@@ -19,9 +19,9 @@ export default function Home() {
     <div className="w-[100%] overflow-x-hidden font-bahij scroll-smooth">
       <LandingPage image={Hand} title="أحب الناس إلى الله أنفعهم للناس" />
       <section id="2" className="flex flex-wrap justify-center px-[7%] py-[5%] gap-5 xl:h-[100vh] bg-white">
-        <Card location="/completed" src={Masjid} title="مشارعنا المنفذة" />
-        <Card location="/on-progress" src={Pembangunan} title="تكتمل قريبا" />
-        <Card location="/planning" src={Perencanaan} title="بحاجة للتبرع" />
+        <Card location="/completed" src={Masjid} title="تم تنفيذ المشروع" />
+        <Card location="/on-progress" src={Pembangunan} title="أثناء التطوير" />
+        <Card location="/planning" src={Perencanaan} title="في التخطيط" />
       </section>
       <section id="3" className="md:h-[70vh] flex justify-center items-center text-base bg-base md:p-0 p-5">
         <div className="w-[90%] h-[50%] bg-white rounded-3xl flex md:flex-row flex-col justify-center items-center">
