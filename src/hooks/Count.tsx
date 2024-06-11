@@ -8,8 +8,7 @@ export default function Count({ end }: { end: number }) {
         <CountUp end={end} delay={0.5} separator='.'>
             {({ countUpRef, start }) => (
                 <VisibilitySensor onChange={start} delayCall>
-                    <span className='font-bahij' ref={countUpRef}>
-                    </span>
+                    <span className='font-bahij' ref={countUpRef}/>
                 </VisibilitySensor>
 
             )}

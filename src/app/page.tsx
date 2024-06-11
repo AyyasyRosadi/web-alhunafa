@@ -12,6 +12,7 @@ import { BsFillPeopleFill } from "react-icons/bs";
 import Map from '@/components/templates/Map'
 import { markers } from "@/components/constant/Marker";
 import LandingPage from "@/components/templates/LandingPage";
+import Maps from "@/components/sections/Maps";
 
 
 export default function Home() {
@@ -32,12 +33,7 @@ export default function Home() {
           <Counting icon={<PiBuildingApartmentFill />} count={23} title="مركز التعليمي" end />
         </div>
       </section>
-      <section id="4" className="h-[100vh] flex flex-col justify-center items-center gap-7 bg-white">
-        <h1 className="md:text-4xl text-xl text-base">خريطة المشروع</h1>
-        <div className="w-[90%] h-[80%] rounded-3xl flex md:flex-row flex-col justify-center items-center">
-          <Map markers={markers} />
-        </div>
-      </section>
+      <Maps/>
     </div>
   );
 }

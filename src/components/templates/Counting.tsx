@@ -1,4 +1,4 @@
-import Count from '@/hooks/useCount'
+import Count from '@/hooks/Count'
 import React, { ReactNode } from 'react'
 
 export default function Counting({ count, title, icon, end }: { count: number, title: string, icon: ReactNode, end?: boolean }) {

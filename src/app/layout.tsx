@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/templates/Header";
 import Footer from "@/components/templates/Footer";
+import Provider from "@/provider/Provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,11 +19,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className='scroll-smooth overflow-x-hidden scrollbar-hide'>
-      <body className={inter.className}>
-        <Header />
-        {children}
-        <Footer />
-      </body>
+      <Provider>
+        <body className={inter.className}>
+          <Header />
+          {children}
+          <Footer />
+        </body>
+      </Provider>
     </html>
   );
 }

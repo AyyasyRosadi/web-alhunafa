@@ -7,8 +7,6 @@ import {
 import { useState } from "react";
 import MarkerPosition from "./Marker";
 import Image from "next/image";
-import Example from "@/assets/images/example.jpg"
-import Card from "./Card";
 
 const containerStyle = {
   width: "100%",
@@ -31,13 +29,25 @@ const options = {
 
 
 
-export default function Map(props: any) {
+export default function Map({ markers, centers }: { markers: any, centers?: any }) {
+
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyB2jb_cTEtzURJ5P9KyO0ZbfVrujgEeee4",
   });
   const [selectedMarker, setSelectedMarker] = useState<any>(null);
-
+  console.log(centers)
+  const options = Object.keys(centers)?.length !== 0 ? {
+    mapTypeId: "satellite",
+    labels: true,
+    center: { lat: parseFloat(centers?.lat), lng: parseFloat(centers?.long) },
+    zoom: 18,
+  } : {
+    mapTypeId: "satellite",
+    labels: true,
+    center: center,
+    zoom: 9,
+  }
   const onMarkerClick = (marker: any) => {
     setSelectedMarker(marker);
   };
@@ -45,15 +55,12 @@ export default function Map(props: any) {
   const handleCloseInfoWindow = () => {
     setSelectedMarker(null);
   };
-
-
-
   return isLoaded ? (
     <GoogleMap mapContainerStyle={containerStyle} options={options}>
-      {props.markers.map((marker: any, index: number) => (
+      {markers?.length > 0 && markers?.map((marker: any, index: number) => (
         <MarkerPosition
           key={index}
-          position={marker.position}
+          position={marker?.position}
           onClick={() => onMarkerClick(marker)}
           icon={marker.type}
         />
@@ -64,9 +71,9 @@ export default function Map(props: any) {
             <div className="text-right font-bahij">
               <h2 className="text-base text-lg mb-2">معلومة</h2>
               <div className="flex flex-col gap-2 w-72">
-                <Image src={Example} alt="" className="w-72 h-40 bg-green-500" />
-                <p className="text-base">{selectedMarker.title}</p>
-                <p className="text-xs">هناك العديد من الأشكال المتوفرة لنصوص لوريم إيبسوم، لكن الأغلبية عانت من التغيير بشكل ما، عن طريق إدخال الفكاهة أو الكلمات العشوائية التي لا تبدو قابلة للتصديق ولو قليلاً. إذا كنت ستستخدم فقرة من نص لوريم إيبسوم، فيجب أن تتأكد من عدم وجود أي شيء محرج مخفي في منتصف النص.</p>
+                <Image src={`http://192.168.1.8:8080/file/${selectedMarker?.image}`} width={1000} height={1000} alt="image" className="w-72 h-40 bg-green-500" />
+                <p className="text-base">{selectedMarker?.title}</p>
+                <p className="text-xs">{selectedMarker?.description}</p>
               </div>
             </div>
           </InfoWindow>

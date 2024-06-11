@@ -7,13 +7,14 @@
 
 
 .scrollbar-hide::-webkit-scrollbar {
-    width: 5px;
+    width: 0px;
   }
   
   .scrollbar-hide::-webkit-scrollbar-track {
     background: none;
   }
   
-  .scrollbar-hide::-webkit-scrollbar-thumb {
+  /* .scrollbar-hide::-webkit-scrollbar-thumb {
     background-color: #082497;
-  }
+    background-
+  } */
