@@ -53,7 +53,6 @@ export default function Page() {
     }
     const save = () => {
         saveFile.mutate({ title, description: desc, lat: parseFloat(lat), long: parseFloat(long), proposal: proposal64.split(',')[1], image: image64.split(',')[1], type_id: typeId?.value })
-        console.log({ title, description: desc, lat: parseFloat(lat), long: parseFloat(long), proposal: proposal64.split(',')[1], image: image64.split(',')[1], type_id: typeId?.value })
     }
     return (
         <div className='flex flex-col justify-center items-center w-screen p-[5%]'>
