@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/templates/Header";
 import Footer from "@/components/templates/Footer";
 import Provider from "@/provider/Provider";
+import { NextAuthProvider } from "./NextProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,13 +20,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className='scroll-smooth overflow-x-hidden scrollbar-hide'>
-      <Provider>
-        <body className={inter.className}>
-          <Header />
-          {children}
-          <Footer />
-        </body>
-      </Provider>
+      <NextAuthProvider>
+        <Provider>
+          <body className={inter.className}>
+            <Header />
+            {children}
+            <Footer />
+          </body>
+        </Provider>
+      </NextAuthProvider>
     </html>
   );
 }

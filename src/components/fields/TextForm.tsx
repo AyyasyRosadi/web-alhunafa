@@ -5,7 +5,7 @@ type InputFormAttributes = {
     id: string;
     max?: number;
     step?: number;
-    type?: 'text' | 'number';
+    type?: 'text' | 'number' | 'password';
     title?: string;
     className?: string;
     read?: boolean;

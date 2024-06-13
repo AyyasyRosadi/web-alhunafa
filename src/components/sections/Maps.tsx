@@ -5,19 +5,20 @@ import TextField from '../fields/TextField'
 import { FaSearch } from 'react-icons/fa'
 import useGetMaps from '@/hooks/query/useGetMaps'
 import useSearchLocation from '@/hooks/query/useSearchLocation'
+import { ProjectAttributes } from '@/type'
 
 export default function Maps() {
     const [titleKey, setTitleKey] = useState('')
     const [oneLocation, setOneLocation] = useState({})
     const [hasLocation, setHasLocation] = useState(false)
     const markers = useGetMaps(true)
-    const point = markers?.data?.map((val: any) => {
-        return { position: { lat: parseFloat(val.lat), lng: parseFloat(val.long) }, title: val?.title, type: +val?.type_id, image: val?.image, description: val?.description, proposal: val?.proposal }
+    const point = markers?.data?.map((val: ProjectAttributes) => {
+        return { id: val.id, position: { lat: parseFloat(val.lat), lng: parseFloat(val.long) }, title: val?.title, type: +val?.type_id, image: val?.image, description: val?.description, proposal: val?.proposal }
     })
     const searchMaps = useSearchLocation(titleKey)
 
     const handler = useCallback((event: KeyboardEvent, data: any) => {
-        if(data && data?.length !== 0 && event?.key === 'Enter'){
+        if (data && data?.length !== 0 && event?.key === 'Enter') {
             setOneLocation(data[0])
             setHasLocation(true)
             setTitleKey(data[0]?.title)

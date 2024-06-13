@@ -1,4 +1,5 @@
-import api from '@/api/http'
+'use client'
+import api from '@/app/api/http'
 import { useQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
 

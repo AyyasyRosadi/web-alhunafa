@@ -7,6 +7,8 @@ import {
 import { useState } from "react";
 import MarkerPosition from "./Marker";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { url } from "../constant/Url";
 
 const containerStyle = {
   width: "100%",
@@ -30,13 +32,12 @@ const options = {
 
 
 export default function Map({ markers, centers }: { markers: any, centers?: any }) {
-
+  const navigate = useRouter()
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyB2jb_cTEtzURJ5P9KyO0ZbfVrujgEeee4",
   });
   const [selectedMarker, setSelectedMarker] = useState<any>(null);
-  console.log(centers)
   const options = Object.keys(centers)?.length !== 0 ? {
     mapTypeId: "satellite",
     labels: true,
@@ -68,10 +69,10 @@ export default function Map({ markers, centers }: { markers: any, centers?: any 
       {
         selectedMarker && (
           <InfoWindow position={{ lat: selectedMarker.position.lat, lng: selectedMarker.position.lng }} onCloseClick={handleCloseInfoWindow}>
-            <div className="text-right font-bahij">
+            <div className="text-right font-bahij cursor-pointer" onClick={() => navigate.push(`/detail/${selectedMarker?.id}`)}>
               <h2 className="text-base text-lg mb-2">معلومة</h2>
               <div className="flex flex-col gap-2 w-72">
-                <Image src={`http://192.168.1.8:8080/file/${selectedMarker?.image}`} width={1000} height={1000} alt="image" className="w-72 h-40 bg-green-500" />
+                <Image src={`${url}/file/${selectedMarker?.image}`} width={1000} height={1000} alt="image" className="w-72 h-40 bg-green-500" />
                 <p className="text-base">{selectedMarker?.title}</p>
                 <p className="text-xs">{selectedMarker?.description}</p>
               </div>

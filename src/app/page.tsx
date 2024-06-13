@@ -24,8 +24,8 @@ export default function Home() {
         <Card location="/on-progress" src={Pembangunan} title="تكتمل قريبا" />
         <Card location="/planning" src={Perencanaan} title="بحاجة للتبرع" />
       </section>
-      <section id="3" className="md:h-[70vh] flex justify-center items-center text-base bg-base md:p-0 p-5">
-        <div className="w-[90%] h-[50%] bg-white rounded-3xl flex md:flex-row flex-col justify-center items-center">
+      <section id="3" className="xl:h-[70vh] flex justify-center items-center text-base bg-base xl:p-0 p-5">
+        <div className="w-[90%] h-[50%] bg-white rounded-3xl flex xl:flex-row flex-col justify-center items-center">
           <Counting icon={<BsFillPeopleFill className="" />} count={5808} title="مصلين" />
           <Counting icon={<PiStudentFill />} count={8954} title="طلبة" />
           <Counting icon={<GiWell />} count={15} title="بئر" />

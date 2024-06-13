@@ -1,10 +1,14 @@
 'use client'
+import { typeOptions } from '@/components/constant/Type'
 import Selector from '@/components/fields/Selector'
 import TextField from '@/components/fields/TextField'
+import UploadFile from '@/components/fields/UploadFIle'
 import useAddFile from '@/hooks/query/useAddFile'
+import { useSession } from 'next-auth/react'
 import React, { Dispatch, SetStateAction, useState } from 'react'
 
 export default function Page() {
+    const session = useSession()
     const [title, setTitle] = useState('')
     const [desc, setDesc] = useState('')
     const [lat, setLat] = useState('')
@@ -48,28 +52,23 @@ export default function Page() {
         }
     }
     const save = () => {
-        // console.log({ title, lat, long, proposal64, image64 })
-        console.log(proposal64.split(','))
-        console.log(image64.split(','))
         saveFile.mutate({ title, description: desc, lat: parseFloat(lat), long: parseFloat(long), proposal: proposal64.split(',')[1], image: image64.split(',')[1], type_id: typeId?.value })
         console.log({ title, description: desc, lat: parseFloat(lat), long: parseFloat(long), proposal: proposal64.split(',')[1], image: image64.split(',')[1], type_id: typeId?.value })
     }
-    const typeOptions = [
-        { value: "1", label: 'Markaz' },
-        { value: "2", label: 'Mosque' },
-        { value: "3", label: 'Well' },
-    ]
     return (
-        <div className='flex flex-col justify-center items-center w-screen h-screen'>
-            <div className='w-[30%] flex flex-col gap-5'>
-                <TextField id='title' title='Judul' value={title} setValue={(key) => setTitle(key?.target?.value)} />
-                <TextField id='description' title='Deskripsi' value={desc} setValue={(key) => setDesc(key?.target?.value)} />
-                <TextField id='lat' title='Lat' value={lat} setValue={(key) => setLat(key?.target?.value)} />
-                <TextField id='long' title='Long' value={long} setValue={(key) => setLong(key?.target?.value)} />
-                <TextField id='proposal' title='Proposal' type='file' value={proposal} setValue={(event) => convertToBase64(event, setProposal, setProposal64)} />
-                <TextField id='gambar' title='Gambar' type='file' value={image} setValue={(event) => convertToBase64(event, setImage, setImage64)} />
+        <div className='flex flex-col justify-center items-center w-screen p-[5%]'>
+            <div className='w-[40%] flex flex-col gap-5 p-5 shadow-xl rounded-xl'>
+                <TextField right id='title' title='عنوان' value={title} setValue={(key) => setTitle(key?.target?.value)} />
+                <TextField right id='description' title='وصف' value={desc} setValue={(key) => setDesc(key?.target?.value)} />
+                <TextField right id='lat' title='خط العرض / Lat' value={lat} setValue={(key) => setLat(key?.target?.value)} />
+                <TextField right id='long' title='خط الطول / Long' value={long} setValue={(key) => setLong(key?.target?.value)} />
+                <TextField right id='proposal' title='عرض' type='file' value={proposal} setValue={(event) => convertToBase64(event, setProposal, setProposal64)} />
+                <UploadFile title='صورة' preview={image64} value={image} setValue={(event) => convertToBase64(event, setImage, setImage64)} remove={() => {
+                    setImage('')
+                    setImage64('')
+                }} />
                 <Selector instanceId='type' title='Tipe' value={typeId} setValue={setTypeId} options={typeOptions} />
-                <button className=' py-2 w-[100%] rounded-md bg-base text-white' onClick={save}>Simpan</button>
+                <button className=' py-2 w-[100%] rounded-md bg-base text-white' onClick={save}>يحفظ</button>
             </div>
         </div>
     )
