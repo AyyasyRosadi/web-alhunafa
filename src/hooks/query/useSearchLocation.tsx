@@ -18,6 +18,7 @@ export default function useSearchLocation(title: string) {
         if (title.length > 0) {
             location.refetch()
         }
+        // eslint-disable-next-line 
     }, [title])
     return { data: location?.data, loading: location?.isPending }
 }

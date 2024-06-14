@@ -11,7 +11,6 @@ import { ProjectAttributes } from '@/type'
 
 export default function Page() {
     const { data, loading } = useGetProjectByStatus(1)
-    console.log(data)
     return (
         <div className='font-bahij overflow-x-hidden'>
             <LandingPage image={Onprogress} title='تكتمل قريبا' />

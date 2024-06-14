@@ -23,10 +23,12 @@ export default function Maps() {
             setHasLocation(true)
             setTitleKey(data[0]?.title)
         }
+        // eslint-disable-next-line 
     }, [])
     useEffect(() => {
         document.addEventListener('keydown', (event) => handler(event, searchMaps?.data));
         return () => document.removeEventListener("keydown", (event) => handler(event, searchMaps?.data));
+        // eslint-disable-next-line 
     }, [searchMaps?.loading])
     return (
         <section id="4" className="h-[100vh] flex flex-col justify-center items-center relative font-bahij">

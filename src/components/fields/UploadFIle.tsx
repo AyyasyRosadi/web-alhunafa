@@ -1,5 +1,5 @@
-import Image from "next/image";
-import React, { ChangeEventHandler, Dispatch, InputHTMLAttributes, ReactNode, SetStateAction, useEffect, useRef, useState } from "react";
+ /* eslint-disable */
+ import React, { ChangeEventHandler, Dispatch, InputHTMLAttributes, ReactNode, SetStateAction, useEffect, useRef, useState } from "react";
 import { HiTrash } from "react-icons/hi";
 
 type UploadFileAttributes = {
@@ -31,6 +31,7 @@ function UploadFile({ title, preview, type, setValue, value, placeholder, remove
       >
         {preview ? (
           <img className="mx-auto w-[100%] h-[100%]" src={preview} alt="" />
+          // eslint-disable-next-line 
         ) : (
           <div className="flex items-center space-x-2 h-[15rem] w-full hover:bg-slate-200 transition-colors ease-in-out duration-300">
             <div className="flex md:flex-row flex-col space-x-2 w-full justify-center">

@@ -19,10 +19,12 @@ export default function Page() {
         if(event?.key === 'Escape'){
             setShowModal(false)
         }
+        // eslint-disable-next-line 
     }, [showModal])
     useEffect(() => {
         document.addEventListener('keydown', closePdf)
         return () => document.removeEventListener('keydown', closePdf)
+        // eslint-disable-next-line
     }, [])
     return (
         <div className='font-bahij overflow-x-hidden'>

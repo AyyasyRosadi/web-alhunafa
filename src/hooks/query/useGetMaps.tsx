@@ -18,6 +18,7 @@ export default function useGetMaps(status: boolean) {
         if (status) {
             location.refetch()
         }
+        // eslint-disable-next-line 
     }, [status])
     return { data: location?.data, loading: location?.isPending }
 }

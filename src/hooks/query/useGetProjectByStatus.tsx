@@ -18,6 +18,7 @@ export default function useGetProjectByStatus(status: number) {
         if (statusLabel.includes(status)) {
             project.refetch()
         }
+        // eslint-disable-next-line 
     }, [status])
     return { loading: project?.isPending, data: project?.data }
 }

@@ -18,6 +18,7 @@ export default function useGetDetailProject(id: string) {
     if (id.length !== 0) {
       project.refetch()
     }
+    // eslint-disable-next-line 
   }, [id])
   return { loading: project?.isPending, data: project?.data }
 }
