@@ -3,8 +3,8 @@ import { getSession, signOut } from "next-auth/react";
 
 
 const api = axios.create({
-    // baseURL: 'https://api-alhunafa.diyaproject.id',
-    baseURL:'http://192.168.1.12:8080',
+    baseURL: 'https://api-alhunafa.diyaproject.id',
+    // baseURL:'http://192.168.1.12:8080',
     
 })
 
