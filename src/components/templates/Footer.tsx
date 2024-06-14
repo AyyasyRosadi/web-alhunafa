@@ -3,12 +3,14 @@ import React from 'react'
 import Logo from "@/assets/images/whiteLogo.png"
 import Image from 'next/image'
 import { BsFacebook, BsInstagram, BsTwitterX } from 'react-icons/bs'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 export default function Footer() {
+    const notUsingHeader = ['/admin','/admin/home/project','/admin/home/user','/admin/home/form']
     const navigation = useRouter()
+    const path = usePathname()
     return (
-        <div className=' bg-base flex md:justify-between xl:items-center items-end xl:flex-row flex-col py-5 px-[5%] xl:gap-0 gap-5 text-white font-bahij '>
+        <div className={`${notUsingHeader.includes(path) ? 'hidden':'block'} bg-base flex md:justify-between xl:items-center items-end xl:flex-row flex-col py-5 px-[5%] xl:gap-0 gap-5 text-white font-bahij `}>
             <div className='xl:w-[33%] md:h-[50%] w-[100%] flex items-end flex-col text-right'>
                 <h1 className='md:text-[30px] text-[20xp] text-right'>القائمة الرئيسية</h1>
                 <h1 className='md:text-[15px] text-[10px]'>مدينة ماتارام جزيرة لومبوك محافطة نوسا تنجارى الغربية حمهورية إندونيسيا.

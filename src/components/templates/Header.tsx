@@ -4,16 +4,18 @@ import React, { useState } from 'react'
 import Logo from "@/assets/images/logo.png"
 import WhiteLogo from "@/assets/images/whiteLogo.png"
 import useScrollVIew from '@/hooks/useScrollVIew'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { BsViewStacked } from 'react-icons/bs'
 import { MdOutlineClose } from 'react-icons/md'
 
 export default function Header() {
+    const notUsingHeader = ['/admin','/admin/home/project','/admin/home/user','/admin/home/form']
     const showHeader = useScrollVIew(150)
     const navigation = useRouter()
+    const path = usePathname()
     const [showMenuMobile, setShowMenuMobile] = useState(false)
     return (
-        <div className={`fixed top-0 z-50 w-[100vw] flex md:justify-end justify-between gap-10 py-5 px-[10%] items-center ${showHeader ? 'bg-base' : 'bg-transparent'} transition-colors ease-out duration-300`}>
+        <div className={`${notUsingHeader.includes(path) ? 'hidden':'block'} fixed top-0 z-50 w-[100vw] flex md:justify-end justify-between gap-10 py-5 px-[10%] items-center ${showHeader ? 'bg-base' : 'bg-transparent'} transition-colors ease-out duration-300`}>
             <ul className={`font-bahij md:flex gap-10 md:text-lg text-xs hidden ${showHeader ? 'text-white' : 'text-base'} transition-colors ease-in-out duration-300`}>
                 <li className='cursor-pointer' onClick={() => navigation.push('/about-us')}>عن المؤسسة</li>
                 <li className='cursor-pointer' onClick={() => navigation.push('/')}>الرئيسية</li>
