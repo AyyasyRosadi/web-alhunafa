@@ -10,7 +10,7 @@ import FormAddProject from '@/components/forms/FormAddProject'
 import FormDeleteProject from '@/components/forms/FormDeleteProject'
 import FormUpdateProject from '@/components/forms/FormUpdateProject'
 
-export default function page() {
+export default function Page() {
     const [showFormAddProject, setShowFormAddProject] = useState(false)
     const [showFormUpdateProject, setShowFormUpdateProject] = useState(false)
     const [showFormDeleteProject, setShowFormDeleteProject] = useState(false)
