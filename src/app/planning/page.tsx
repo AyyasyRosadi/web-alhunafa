@@ -39,7 +39,7 @@ export default function Page() {
                 ))}
             </section>
             <Modal show={showModal} close={() => setShowModal(false)} title='تفاصيل المشروع' scroll>
-                <PdfViewer url={`${url}/file/${savePdf}`} />
+                <PdfViewer url={`${url}/${savePdf}`} />
             </Modal>
         </div>
     )

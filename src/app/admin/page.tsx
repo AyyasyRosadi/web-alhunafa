@@ -24,6 +24,7 @@ export default function Login(): ReactNode {
     })
     const submit_ = async (e: { email: string, password: string }) => {
         setShowLoading(true)
+        console.log(e)
         const isLogin = await UseLogin(e)
         if (isLogin?.status === 200 && isLogin?.url) {
             setMessage('')

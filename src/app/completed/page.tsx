@@ -22,7 +22,7 @@ export default function Page() {
             <LandingPage image={Completed} title='تم تنفيذ المشروع' />
             <section className='p-[5%] flex flex-wrap justify-end items-start gap-5'>
                 {data?.length !== 0 && data?.map((value: ProjectAttributes, id: number) => (
-                    <Card key={id} src={`${url}/file/${value.image}`} title={value.title}>
+                    <Card key={id} src={`${url}/${value.image}`} title={value.title}>
                         <>
                             <h1 className='text-center text-base mb-3'>( {typeOptions?.find((val) => val.value === `${value.type_id}`)?.label} )</h1>
                             <h1 className='text-right'>{value.description}</h1>

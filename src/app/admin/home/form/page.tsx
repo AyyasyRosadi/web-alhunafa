@@ -17,7 +17,7 @@ export default function Page() {
     const [image, setImage] = useState('')
     const [proposal64, setProposal64] = useState('')
     const [image64, setImage64] = useState('')
-    const [typeId, setTypeId] = useState({ value: 1, label: 'Markaz' })
+    const [typeId, setTypeId] = useState({ value: "1", label: 'Markaz' })
     const saveFile = useAddFile(
         () => {
             alert('succes')

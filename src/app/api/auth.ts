@@ -30,7 +30,6 @@ export const authOption: NextAuthOptions = {
                         }
                     }
                 } catch (e: any) {
-                    console.log(e)
                     throw new Error(JSON.stringify({ msg: e.response?.data?.msg, status: 401 }))
                 }
             }
