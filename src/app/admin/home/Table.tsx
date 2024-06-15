@@ -41,16 +41,27 @@ export function Location() {
     )
 }
 
-export default function TableData({ title, clickAdd, children, data, head, calculate, filters, noButton, buttonName }: TableData): ReactNode {
+export default function TableData({ title, clickAdd, children, data, head, calculate, filters, noButton, buttonName, pages }: TableData): ReactNode {
     return (
         <div className='flex flex-col w-[95%] items-end'>
             <Location />
             <div className='border bg-white px-7 py-10 full rounded-sm shadow-md mt-[2vh] w-[100%]'>
                 <div className='flex justify-between mb-5 h-[10%]'>
-                    <div className='flex gap-2 items-end md:flex-row flex-col mt-[6px]'>
-                        {noButton ? <></> : <Button title={buttonName ? buttonName : 'تألف'} click={clickAdd!} />}
+                    <div className='flex gap-2 md:flex-row flex-col'>
+                        <div className='mt-[1px]'>
+                            {noButton ? <></> : <Button title={buttonName ? buttonName : 'تألف'} click={clickAdd!} />}
+                        </div>
+                        <div className='bg-white'>
+                            {data?.length! > 0 ?
+                                <>
+                                    {pages}
+                                </>
+                                :
+                                <></>
+                            }
+                        </div>
                     </div>
-                    <div className='flex xl:flex-row flex-col xl:gap-5 gap-4'>
+                    <div className='flex xl:flex-row flex-col items-end xl:gap-5 gap-4'>
                         {filters}
                         <TitleTable title={title} />
                     </div>

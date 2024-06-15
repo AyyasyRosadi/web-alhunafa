@@ -1,7 +1,6 @@
 'use client'
 import React, { useState } from 'react'
 import TableData from '../Table'
-import useGetMaps from '@/hooks/query/useGetMaps'
 import useGetAllProjects from '@/hooks/query/useGetAllProjects'
 import { typeOptions } from '@/components/constant/Type'
 import Loading from '@/components/templates/Loading'
@@ -10,7 +9,8 @@ import FormAddProject from '@/components/forms/FormAddProject'
 import FormDeleteProject from '@/components/forms/FormDeleteProject'
 import FormUpdateProject from '@/components/forms/FormUpdateProject'
 import TextField from '@/components/fields/TextField'
-import useSearchLocation from '@/hooks/query/useSearchLocation'
+import useGetProjectByTitle from '@/hooks/query/useGetProjectByTitle'
+import Pagination from '@/components/templates/Pagination'
 
 export default function Page() {
     const [showFormAddProject, setShowFormAddProject] = useState(false)
@@ -26,18 +26,26 @@ export default function Page() {
         { title: 'عنوان', type: 'string' },
         { title: 'رقم', type: 'string' },
     ]
-    const { data, loading } = keySearch?.length > 2 ? useSearchLocation(keySearch) : useGetAllProjects(true)
+    const [page, setPage] = useState<number>(1)
+    const [size, setSize] = useState<number>(2)
+    const { data, loading } = keySearch?.length > 2 ? useGetProjectByTitle(keySearch) : useGetAllProjects(true,size,page)
+    const projects = keySearch?.length > 2 ? data : data?.rows
+    const total_pages = keySearch?.length > 2 ? 1 : data?.total_pages
     return (
         <>
             <FormAddProject show={showFormAddProject} close={() => setShowFormAddProject(false)} />
             <FormUpdateProject show={showFormUpdateProject} close={() => setShowFormUpdateProject(false)} data={oneProject} />
             <FormDeleteProject show={showFormDeleteProject} close={() => setShowFormDeleteProject(false)} data={oneProject} />
-            <TableData head={head} title='المشاريع' data={data} clickAdd={() => setShowFormAddProject(true)} filters={
+            <TableData head={head} title='المشاريع' data={projects} clickAdd={() => setShowFormAddProject(true)} filters={
                 <div>
                     <TextField id='search' title='الكلمات الدالة' value={keySearch} setValue={(event) => setKeySearch(event?.target?.value)} right />
                 </div>
-            }>
-                {data?.length !== 0 && data?.map((value: any, index: number) => (
+            }
+                pages={
+                    <Pagination page={page} allPage={total_pages} setPage={setPage} value={size} setValue={(data) => setSize(parseInt(data.value as string))} />
+                }
+            >
+                {projects?.length !== 0 && projects?.map((value: any, index: number) => (
                     <tr key={index} className="bg-white border-b border-slate-100 hover:bg-gray-100 overflow-y-auto">
                         <td className='px-6 py-3 flex gap-2 justify-end'>
                             <HiPencil className='w-8 h-8 bg-sky-400 hover:bg-sky-500 rounded-full p-2 cursor-pointer text-white' onClick={() => {

@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import Completed from "@/assets/images/completed.jpg"
 import LandingPage from '@/components/templates/LandingPage'
 import { StaticImport } from 'next/dist/shared/lib/get-img-props'
@@ -8,6 +8,7 @@ import useGetProjectByStatus from '@/hooks/query/useGetProjectByStatus'
 import { ProjectAttributes } from '@/type'
 import { url } from '@/components/constant/Url'
 import { typeOptions } from '@/components/constant/Type'
+import Pagination from '@/components/templates/Pagination'
 
 interface ProjectImplementedAttributes {
     image: StaticImport,
@@ -16,12 +17,16 @@ interface ProjectImplementedAttributes {
 }
 
 export default function Page() {
-    const { data, loading } = useGetProjectByStatus(2)
+    const [page, setPage] = useState<number>(1)
+    const [size, setSize] = useState<number>(5)
+    const { data, loading } = useGetProjectByStatus(2, size, page)
+    const total_pages = data?.total_pages
     return (
         <div className='font-bahij overflow-x-hidden'>
             <LandingPage image={Completed} title='تم تنفيذ المشروع' />
             <section className='p-[5%] flex flex-wrap justify-end items-start gap-5'>
-                {data?.length !== 0 && data?.map((value: ProjectAttributes, id: number) => (
+                <Pagination page={page} allPage={total_pages} setPage={setPage} value={size} setValue={(data) => setSize(parseInt(data.value as string))} />
+                {data?.rows?.length !== 0 && data?.rows?.map((value: ProjectAttributes, id: number) => (
                     <Card key={id} src={`${url}/${value.image}`} title={value.title}>
                         <>
                             <h1 className='text-center text-base mb-3'>( {typeOptions?.find((val) => val.value === `${value.type_id}`)?.label} )</h1>

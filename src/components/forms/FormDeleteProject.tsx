@@ -11,7 +11,7 @@ export default function FormDeleteProject({ data, show, close }: { data: any, sh
     const [showMessage, setShowMessage] = useState(false)
     const [message, setMessage] = useState('')
     const [status, setStatus] = useState(false)
-    useGetAllProjects(status)
+    useGetAllProjects(status,5,1)
     const deleteProject = useDeleteProject(
         () => {
             close()

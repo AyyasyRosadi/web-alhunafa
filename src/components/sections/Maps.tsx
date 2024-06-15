@@ -16,7 +16,6 @@ export default function Maps() {
         return { id: val.id, position: { lat: parseFloat(val.lat), lng: parseFloat(val.long) }, title: val?.title, type: +val?.type_id, image: val?.image, description: val?.description, proposal: val?.proposal }
     })
     const searchMaps = useSearchLocation(titleKey)
-
     const handler = useCallback((event: KeyboardEvent, data: any) => {
         if (data && data?.length !== 0 && event?.key === 'Enter') {
             setOneLocation(data[0])

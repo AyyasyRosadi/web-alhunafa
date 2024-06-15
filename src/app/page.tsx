@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Hand from "@/assets/images/hand.jpg"
 import Masjid from "@/assets/images/masjid.jpg"
 import Pembangunan from "@/assets/images/pembangunan.jpg"
@@ -9,8 +8,6 @@ import { GiWell } from "react-icons/gi";
 import { FaMosque } from "react-icons/fa";
 import { PiBuildingApartmentFill, PiStudentFill } from "react-icons/pi";
 import { BsFillPeopleFill } from "react-icons/bs";
-import Map from '@/components/templates/Map'
-import { markers } from "@/components/constant/Marker";
 import LandingPage from "@/components/templates/LandingPage";
 import Maps from "@/components/sections/Maps";
 

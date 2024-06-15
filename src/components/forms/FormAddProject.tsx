@@ -31,13 +31,13 @@ export default function FormAddProject({ show, close }: { show: boolean, close: 
         )
     })
     const [proposal,setProposal] = useState('')
-    const [image, setImage] = useState('')
     const [proposal64, setProposal64] = useState('')
+    const [image, setImage] = useState('')
     const [image64, setImage64] = useState('')
     const [showMessage, setShowMessage] = useState(false)
     const [message, setMessage] = useState('')
     const [status, setStatus] = useState(false)
-    useGetAllProjects(status)
+    useGetAllProjects(status,5,1)
     const saveFile = useAddNewProject(
         () => {
             close()
@@ -92,16 +92,16 @@ export default function FormAddProject({ show, close }: { show: boolean, close: 
             <Message show={showMessage} message={message} succes={status} />
             <Modal title='نموذج إضافة مشروع' show={show} close={close} scroll>
                 <form className='flex flex-col gap-3' onSubmit={method.handleSubmit(save)}>
-                    <TextForm method={method} methodName='title' right id='title' title='عنوان'  />
-                    <TextForm method={method} methodName='description' right id='description' title='وصف'/>
-                    <TextForm method={method} methodName='lat' right id='lat' title='خط العرض / Lat'/>
-                    <TextForm method={method} methodName='long' right id='long' title='خط الطول / Long'/>
-                    <TextField right id='proposal' title='عرض' type='file' value={proposal} setValue={(event) => convertToBase64(event, setProposal, setProposal64,'proposal')} />
+                    <TextForm method={method} methodName='title' right id='add-title' title='عنوان'  />
+                    <TextForm method={method} methodName='description' right id='add-description' title='وصف'/>
+                    <TextForm method={method} methodName='lat' right id='add-lat' title='خط العرض / Lat'/>
+                    <TextForm method={method} methodName='long' right id='add-long' title='خط الطول / Long'/>
+                    <TextField right id='add-proposal' title='عرض' type='file' value={proposal} setValue={(event) => convertToBase64(event, setProposal, setProposal64,'proposal')} />
                     <UploadFile title='صورة' preview={image64} value={image} setValue={(event: any) => convertToBase64(event, setImage, setImage64,'image')} remove={() => {
                         setImage('')
                         setImage64('')
                     }} />
-                    <SelectForm instanceId='type' title='نوع' method={method} methodName='type_id' options={typeOptions} />
+                    <SelectForm instanceId='add-type' title='نوع' method={method} methodName='type_id' options={typeOptions} />
                     <button type='submit' className=' py-2 w-[100%] rounded-md bg-base text-white'>يحفظ</button>
                 </form>
             </Modal>

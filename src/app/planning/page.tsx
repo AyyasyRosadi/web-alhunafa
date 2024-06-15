@@ -10,13 +10,17 @@ import PdfViewer from '@/components/templates/PdfViewer'
 import { url } from '@/components/constant/Url'
 import useGetProjectByStatus from '@/hooks/query/useGetProjectByStatus'
 import { ProjectAttributes } from '@/type'
+import Pagination from '@/components/templates/Pagination'
 
 export default function Page() {
     const [showModal, setShowModal] = useState(false)
     const [savePdf, setSavePdf] = useState('')
-    const { data, loading } = useGetProjectByStatus(0)
+    const [page, setPage] = useState<number>(1)
+    const [size, setSize] = useState<number>(5)
+    const { data, loading } = useGetProjectByStatus(0, size, page)
+    const total_pages = data?.total_pages
     const closePdf = useCallback((event: KeyboardEvent) => {
-        if(event?.key === 'Escape'){
+        if (event?.key === 'Escape') {
             setShowModal(false)
         }
         // eslint-disable-next-line 
@@ -30,7 +34,8 @@ export default function Page() {
         <div className='font-bahij overflow-x-hidden'>
             <LandingPage image={Planning} title='بحاجة للتبرع' />
             <section className='p-[5%] flex flex-wrap justify-end items-center gap-5'>
-                {data?.map((value: ProjectAttributes, id: number) => (
+                <Pagination page={page} allPage={total_pages} setPage={setPage} value={size} setValue={(data) => setSize(parseInt(data.value as string))} />
+                {data?.rows?.length !== 0 && data?.rows?.map((value: ProjectAttributes, id: number) => (
                     <div key={id} onClick={() => {
                         setSavePdf(value.proposal)
                         setShowModal(true)
@@ -41,7 +46,7 @@ export default function Page() {
                 ))}
             </section>
             <Modal show={showModal} close={() => setShowModal(false)} title='تفاصيل المشروع' scroll>
-                <PdfViewer url={`${url}/${savePdf}`} />
+                <PdfViewer url={savePdf ? `${url}/${savePdf}`:`#`} />
             </Modal>
         </div>
     )

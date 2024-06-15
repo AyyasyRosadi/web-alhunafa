@@ -33,9 +33,9 @@ export default function Pagination({ page, allPage, setPage, value, setValue }: 
         { value: 1000, label: 1000 },
     ]
     return (
-        <div className='h-[100%] flex justify-end items-end w-[100%]'>
-            <div className='flex md:flex-row flex-col gap-3 items-end'>
-                <Selector instanceId='select-pagination' value={{ value, label: value }} title='Ditampilkan' options={paginationOptions} setValue={setValue} />
+        <div className='h-[100%] flex w-[100%]'>
+            <div className='flex md:flex-row flex-col gap-3 items-center'>
+                <Selector instanceId='select-pagination' value={{ value, label: value }} title='' options={paginationOptions} setValue={setValue} />
                 <div className='flex gap-3 items-end justify-end'>
                     <IoMdArrowDropleft className='w-8 h-8 text-sky-600 cursor-pointer border border-sky-600 rounded-full hover:bg-sky-100' onClick={previousPage} />
                     <div className='flex gap-1 my-auto font-montserrat text-sm text-gray-800'>
