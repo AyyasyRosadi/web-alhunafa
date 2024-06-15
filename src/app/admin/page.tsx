@@ -1,6 +1,6 @@
 'use client'
 import Image from "next/image";
-import Example from "@/assets/images/icon/example.png"
+import Logo from "@/assets/images/logo.png"
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup"
@@ -27,7 +27,7 @@ export default function Login(): ReactNode {
         const isLogin = await UseLogin(e)
         if (isLogin?.status === 200 && isLogin?.url) {
             setMessage('')
-            window.location.href = '/admin/home/form'
+            window.location.href = '/admin/home/project'
         } else {
             setMessage('Username / Password Salah')
         }
@@ -38,16 +38,16 @@ export default function Login(): ReactNode {
         <>
             <Loading show={showLoading} />
             <div className="flex justify-center items-center h-screen">
-                <div className="md:w-[30vw] w-[95vw] rounded-xl shadow-xl border bg-sky-600">
-                    <div className="p-4 flex items-center gap-2">
-                        <Image loading="eager" placeholder="blur" src={Example} alt="" className="w-10 h-10 bg-white rounded-full p-1" />
-                        <h1 className="font-semibold font-montserrat text-white text-lg">Alhunafa</h1>
+                <div className="md:w-[30vw] w-[95vw] rounded-xl shadow-xl border">
+                    <div className="p-4 flex items-center justify-end gap-2 w-[100%]">
+                        <h1 className="font-semibold font-bahij text-base text-lg">الحنفأ</h1>
+                        <Image loading="eager" placeholder="blur" src={Logo} alt="" className="w-14 h-14 bg-white rounded-full p-1" />
                     </div>
-                    <form className="p-4 flex flex-col items-end" onSubmit={method.handleSubmit(submit_)}>
-                        <InputForm id="input-email" title="Email" method={method} methodName="email" whiteText />
-                        <InputForm id="input-password" type="password" title="Password" method={method} methodName="password" whiteText />
+                    <form className="p-4 flex flex-col gap-3" onSubmit={method.handleSubmit(submit_)}>
+                        <InputForm right id="input-email" title="بريد إلكتروني" method={method} methodName="email" whiteText />
+                        <InputForm right id="input-password" type="password" title="كلمة المرور" method={method} methodName="password" whiteText />
                         <h1 className="font-montserrat text-white text-left">{message}</h1>
-                        <button type="submit" className="bg-white px-5 py-2 mt-4 flex font-montserrat text-sky-700 rounded-md hover:bg-slate-100 cursor-pointer outline-none">Login</button>
+                        <button type="submit" className="bg-base px-5 py-2 mt-4 w-[100%] font-bahij text-white rounded-md cursor-pointer outline-none text-center">تسجيل الدخول</button>
                     </form>
                 </div>
             </div >

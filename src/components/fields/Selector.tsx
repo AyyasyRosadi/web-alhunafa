@@ -14,7 +14,7 @@ type SelectorAttributes = {
 function Selector({ title, setValue, options, value, instanceId }: SelectorAttributes): ReactNode {
     return (
         <div className='w-full font-bahij font-light'>
-            <h1 className="md:mx-0 text-md font-semibold text-gray-700 text-right">{title}</h1>
+            <h1 className="text-xs font-bahij text-right">{title}</h1>
             <Select
                 instanceId={instanceId}
                 styles={{

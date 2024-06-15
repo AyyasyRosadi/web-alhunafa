@@ -24,7 +24,7 @@ function SelectForm
     const { error } = method.getFieldState(methodName)
     return (
         <div className={`w-full space-y-1 ${className}`}>
-            <h1 className="md:mx-0 text-md font-montserrat font-semibold text-gray-700">{title}</h1>
+            <h1 className="text-xs font-bahij text-right font-semibold text-gray-700">{title}</h1>
             <Controller
                 control={method.control}
                 name={methodName}

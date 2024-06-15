@@ -22,6 +22,7 @@ export function Location() {
     const pathname = usePathname()
     const pathanamePart = pathname.split('/')
     pathanamePart.shift()
+    pathanamePart.reverse()
     return (
         <div key={''} className='flex'>
             {pathanamePart.map((e, i) => {
@@ -42,16 +43,16 @@ export function Location() {
 
 export default function TableData({ title, clickAdd, children, data, head, calculate, filters, noButton, buttonName }: TableData): ReactNode {
     return (
-        <div className='flex flex-col w-[95%]'>
+        <div className='flex flex-col w-[95%] items-end'>
             <Location />
             <div className='border bg-white px-7 py-10 full rounded-sm shadow-md mt-[2vh] w-[100%]'>
                 <div className='flex justify-between mb-5 h-[10%]'>
-                    <div className='flex gap-5'>
-                        <TitleTable title={title} />
-                        {filters}
+                    <div className='flex gap-2 items-end md:flex-row flex-col mt-[6px]'>
+                        {noButton ? <></> : <Button title={buttonName ? buttonName : 'تألف'} click={clickAdd!} />}
                     </div>
-                    <div className='flex gap-2 items-end md:flex-row flex-col'>
-                        {noButton ? <></> : <Button title={buttonName ? buttonName : 'Create'} click={clickAdd!} />}
+                    <div className='flex xl:flex-row flex-col xl:gap-5 gap-4'>
+                        {filters}
+                        <TitleTable title={title} />
                     </div>
                 </div>
                 <div className='h-[80%]'>

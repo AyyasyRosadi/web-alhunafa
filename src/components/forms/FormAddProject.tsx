@@ -1,39 +1,54 @@
 'use client'
 import React, { Dispatch, SetStateAction, useState } from 'react'
-import { SubmitHandler } from 'react-hook-form'
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import Modal from '../templates/Modal'
 import TextField from '../fields/TextField'
-import useAddFile from '@/hooks/query/useAddFile'
+import TextForm from '../fields/TextForm'
+import useAddNewProject from '@/hooks/query/useAddFile'
 import { typeOptions } from '../constant/Type'
 import UploadFile from '../fields/UploadFIle'
 import Selector from '../fields/Selector'
 import Message from '../templates/Message'
+import useGetAllProjects from '@/hooks/query/useGetAllProjects'
+import Loading from '../templates/Loading'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
+import SelectForm from '../fields/SelectForm'
 
 export default function FormAddProject({ show, close }: { show: boolean, close: () => void }) {
-    const [title, setTitle] = useState('')
-    const [desc, setDesc] = useState('')
-    const [lat, setLat] = useState('')
-    const [long, setLong] = useState('')
-    const [proposal, setProposal] = useState('');
+    const method = useForm({
+        mode:'all',
+        resolver:yupResolver(
+            yup.object().shape({
+                title:yup.string().required(),
+                description:yup.string().min(8,'min 8 characters').required(),
+                lat:yup.string().required(),
+                long:yup.string().required(),
+                proposal:yup.string().required(),
+                image:yup.string().required(),
+                type_id:yup.string().required(),
+            })
+        )
+    })
+    const [proposal,setProposal] = useState('')
     const [image, setImage] = useState('')
     const [proposal64, setProposal64] = useState('')
     const [image64, setImage64] = useState('')
-    const [typeId, setTypeId] = useState({ value: "1", label: 'Markaz' })
     const [showMessage, setShowMessage] = useState(false)
     const [message, setMessage] = useState('')
     const [status, setStatus] = useState(false)
-    const saveFile = useAddFile(
+    useGetAllProjects(status)
+    const saveFile = useAddNewProject(
         () => {
             close()
             setShowMessage(true)
             setMessage('Succes')
             setStatus(true)
-            setTimeout(()=>{
+            setTimeout(() => {
                 setShowMessage(false)
-            },3000)
-            setTitle('')
-            setLat('')
-            setLong('')
+                setStatus(false)
+            }, 3000)
+            method.reset()
             setProposal('')
             setImage('')
             setProposal64('')
@@ -44,50 +59,51 @@ export default function FormAddProject({ show, close }: { show: boolean, close: 
             setShowMessage(true)
             setMessage('Failed')
             setStatus(false)
-            setTimeout(()=>{
+            setTimeout(() => {
                 setShowMessage(false)
-            },3000)
-            setTitle('')
-            setLat('')
-            setLong('')
+            }, 3000)
+            method.reset()
             setProposal('')
             setImage('')
             setProposal64('')
             setImage64('')
         }
     )
-    const convertToBase64 = (event: React.ChangeEvent<HTMLInputElement>, setValue: Dispatch<SetStateAction<string>>, setBase64: Dispatch<SetStateAction<string>>) => {
+    const convertToBase64 = (event: React.ChangeEvent<HTMLInputElement>, setValue: Dispatch<SetStateAction<string>>, setBase64: Dispatch<SetStateAction<string>>,key:any) => {
         setValue(event?.target?.value)
         const file = event!.target!.files![0];
         if (file) {
             const reader: any = new FileReader();
             reader.onloadend = () => {
                 setBase64(reader.result);
+                method.setValue(key,reader?.result.split(',')[1])
             };
             reader.readAsDataURL(file);
         }
     }
-    const save = () => {
-        saveFile.mutate({ title, description: desc, lat: parseFloat(lat), long: parseFloat(long), proposal: proposal64.split(',')[1], image: image64.split(',')[1], type_id: typeId?.value })
+    const save = (e:FieldValues) => {
+        saveFile?.mutate({...e,lat:parseFloat(e.lat),long:parseFloat(e.long)})
+        // saveFile.mutate({ title, description: desc, lat: parseFloat(lat), long: parseFloat(long), proposal: proposal64.split(',')[1], image: image64.split(',')[1], type_id: typeId?.value })
         close()
     }
     return (
         <>
+            <Loading show={saveFile.isPending} />
             <Message show={showMessage} message={message} succes={status} />
             <Modal title='نموذج إضافة مشروع' show={show} close={close} scroll>
-                <div className='flex flex-col gap-3'>
-                    <TextField right id='title' title='عنوان' value={title} setValue={(key) => setTitle(key?.target?.value)} />
-                    <TextField right id='description' title='وصف' value={desc} setValue={(key) => setDesc(key?.target?.value)} />
-                    <TextField right id='lat' title='خط العرض / Lat' value={lat} setValue={(key) => setLat(key?.target?.value)} />
-                    <TextField right id='long' title='خط الطول / Long' value={long} setValue={(key) => setLong(key?.target?.value)} />
-                    <TextField right id='proposal' title='عرض' type='file' value={proposal} setValue={(event) => convertToBase64(event, setProposal, setProposal64)} />
-                    <UploadFile title='صورة' preview={image64} value={image} setValue={(event: any) => convertToBase64(event, setImage, setImage64)} remove={() => {
+                <form className='flex flex-col gap-3' onSubmit={method.handleSubmit(save)}>
+                    <TextForm method={method} methodName='title' right id='title' title='عنوان'  />
+                    <TextForm method={method} methodName='description' right id='description' title='وصف'/>
+                    <TextForm method={method} methodName='lat' right id='lat' title='خط العرض / Lat'/>
+                    <TextForm method={method} methodName='long' right id='long' title='خط الطول / Long'/>
+                    <TextField right id='proposal' title='عرض' type='file' value={proposal} setValue={(event) => convertToBase64(event, setProposal, setProposal64,'proposal')} />
+                    <UploadFile title='صورة' preview={image64} value={image} setValue={(event: any) => convertToBase64(event, setImage, setImage64,'image')} remove={() => {
                         setImage('')
                         setImage64('')
                     }} />
-                    <Selector instanceId='type' title='Tipe' value={typeId} setValue={setTypeId} options={typeOptions} />
-                    <button className=' py-2 w-[100%] rounded-md bg-base text-white' onClick={save}>يحفظ</button>
-                </div>
+                    <SelectForm instanceId='type' title='نوع' method={method} methodName='type_id' options={typeOptions} />
+                    <button type='submit' className=' py-2 w-[100%] rounded-md bg-base text-white'>يحفظ</button>
+                </form>
             </Modal>
         </>
     )
