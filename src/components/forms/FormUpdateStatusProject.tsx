@@ -80,7 +80,7 @@ export default function FormUpdateStatusProject({ data, show, close }: { data: a
     }
     return (
         <>
-            <Loading show={updatestatus?.isPending} />
+            <Loading show={updatestatus?.isPending || sendVideo?.isPending} />
             <Message show={showMessage} message={message} succes={status} />
             <Modal title='نموذج إضافة مشروع' show={show} close={close} scroll>
                 <div className='flex flex-col justify-between gap-3'>

@@ -16,14 +16,13 @@ export default function Page() {
     const [showModal, setShowModal] = useState(false)
     const [savePdf, setSavePdf] = useState('')
     const [page, setPage] = useState<number>(1)
-    const [size, setSize] = useState<number>(5)
+    const [size, setSize] = useState<number>(15)
     const { data, loading } = useGetProjectByStatus(0, size, page)
     const total_pages = data?.total_pages
     return (
         <div className='font-bahij overflow-x-hidden'>
             <LandingPage image={Planning} title='بحاجة للتبرع' />
-            <section className='p-[5%] flex flex-wrap justify-end items-center gap-5'>
-                <Pagination page={page} allPage={total_pages} setPage={setPage} value={size} setValue={(data) => setSize(parseInt(data.value as string))} />
+            <section className='px-[5%] py-[3%] flex flex-wrap justify-end items-center gap-5'>
                 {data?.rows?.length !== 0 && data?.rows?.map((value: ProjectAttributes, id: number) => (
                     <div key={id} onClick={() => {
                         setSavePdf(value.proposal)
@@ -34,6 +33,9 @@ export default function Page() {
                     </div>
                 ))}
             </section>
+            <div className='py-[2%]'>
+                <Pagination noOptions page={page} allPage={total_pages} setPage={setPage} value={size} setValue={(data) => setSize(parseInt(data.value as string))} />
+            </div>
             <Modal show={showModal} close={() => setShowModal(false)} title='تفاصيل المشروع' scroll>
                 <PdfViewer url={savePdf ? `${url}/${savePdf}` : `#`} />
             </Modal>

@@ -9,6 +9,8 @@ import MarkerPosition from "./Marker";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { url } from "../constant/Url";
+import loadingImage from "@/assets/images/icon/loading.png"
+
 
 const containerStyle = {
   width: "100%",
@@ -71,11 +73,15 @@ export default function Map({ markers, centers }: { markers: any, centers?: any 
       ))}
       {
         selectedMarker && (
-          <InfoWindow position={{ lat: selectedMarker.position.lat, lng: selectedMarker.position.lng }} onCloseClick={handleCloseInfoWindow}>
+          <InfoWindow  position={{ lat: selectedMarker.position.lat, lng: selectedMarker.position.lng }} onCloseClick={handleCloseInfoWindow}>
             <div className="text-right font-bahij cursor-pointer" onClick={() => navigate.push(`/detail/${selectedMarker?.id}`)}>
               <h2 className="text-base text-lg mb-2">معلومة</h2>
-              <div className="flex flex-col gap-2 w-72">
-                <Image src={`${url}/${selectedMarker?.image}`} loader={loaderProp} width={1000} height={1000} alt="image" className="w-72 h-40 bg-green-500" />
+              <div className="flex flex-col gap-2 w-72 bg-white z-10">
+                {selectedMarker?.image ?
+                  <Image loading="lazy" src={`${url}/${selectedMarker?.image}`} loader={loaderProp} width={1000} height={1000} alt="image" className="w-72 h-40" />
+                  :
+                  <Image loading="lazy" src={loadingImage} alt="" className='w-12 h-12 animate-spin' />
+                }
                 <p className="text-base">{selectedMarker?.title}</p>
                 <p className="text-xs">{selectedMarker?.description}</p>
               </div>

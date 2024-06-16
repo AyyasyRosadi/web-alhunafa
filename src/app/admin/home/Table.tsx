@@ -48,10 +48,10 @@ export default function TableData({ title, clickAdd, children, data, head, calcu
             <div className='border bg-white px-7 py-10 full rounded-sm shadow-md mt-[2vh] w-[100%]'>
                 <div className='flex justify-between mb-5 h-[10%]'>
                     <div className='flex gap-2 md:flex-row flex-col'>
-                        <div className='mt-[1px]'>
+                        <div className=''>
                             {noButton ? <></> : <Button title={buttonName ? buttonName : 'تألف'} click={clickAdd!} />}
                         </div>
-                        <div className='bg-white'>
+                        <div className='bg-white mt-1'>
                             {data?.length! > 0 ?
                                 <>
                                     {pages}

@@ -4,7 +4,7 @@ import { IoMdArrowDropright, IoMdArrowDropleft } from "react-icons/io";
 import Selector from '../fields/Selector';
 
 
-export default function Pagination({ page, allPage, setPage, value, setValue }: { page: number, allPage: number, setPage: Dispatch<SetStateAction<number>>, value: number, setValue: (data: { value: string | number, label: string | number }) => void }) {
+export default function Pagination({ page, allPage, setPage, value, setValue, noOptions }: { page: number, allPage: number, setPage: Dispatch<SetStateAction<number>>, value: number, setValue: (data: { value: string | number, label: string | number }) => void, noOptions?: boolean }) {
     const [pageNow, setPageNow] = useState(page)
     const previousPage = () => {
         if (pageNow > 1) {
@@ -33,18 +33,16 @@ export default function Pagination({ page, allPage, setPage, value, setValue }: 
         { value: 1000, label: 1000 },
     ]
     return (
-        <div className='h-[100%] flex w-[100%]'>
-            <div className='flex md:flex-row flex-col gap-3 items-center'>
-                <Selector instanceId='select-pagination' value={{ value, label: value }} title='' options={paginationOptions} setValue={setValue} />
-                <div className='flex gap-3 items-end justify-end'>
-                    <IoMdArrowDropleft className='w-8 h-8 text-sky-600 cursor-pointer border border-sky-600 rounded-full hover:bg-sky-100' onClick={previousPage} />
-                    <div className='flex gap-1 my-auto font-montserrat text-sm text-gray-800'>
-                        <h1>{pageNow}</h1>
-                        <h1>/</h1>
-                        <h1>{allPage}</h1>
-                    </div>
-                    <IoMdArrowDropright className='w-8 h-8 text-sky-600 cursor-pointer border border-sky-600 rounded-full hover:bg-sky-100' onClick={nextPage} />
+        <div className='flex md:flex-row flex-col gap-3 items-center justify-center'>
+            {noOptions ? <></> : <Selector instanceId='select-pagination' value={{ value, label: value }} title='' options={paginationOptions} setValue={setValue} />}
+            <div className='flex gap-3 items-end justify-end'>
+                <IoMdArrowDropleft className='w-8 h-8 text-sky-600 cursor-pointer border border-sky-600 rounded-full hover:bg-sky-100' onClick={previousPage} />
+                <div className='flex gap-1 my-auto font-montserrat text-sm text-gray-800'>
+                    <h1>{pageNow}</h1>
+                    <h1>/</h1>
+                    <h1>{allPage}</h1>
                 </div>
+                <IoMdArrowDropright className='w-8 h-8 text-sky-600 cursor-pointer border border-sky-600 rounded-full hover:bg-sky-100' onClick={nextPage} />
             </div>
         </div>
     )
