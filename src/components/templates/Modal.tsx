@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactNode } from 'react'
+import { MouseEventHandler, ReactNode, useCallback, useEffect } from 'react'
 import { GrClose } from "react-icons/gr";
 
 type ModalAttributes = {

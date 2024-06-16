@@ -4,13 +4,13 @@ import Modal from '../templates/Modal'
 import Message from '../templates/Message'
 import Selector from '../fields/Selector'
 import TextField from '../fields/TextField'
-import useUpdateProject from '@/hooks/query/useUpdateProject'
+import useUpdateStatusProject from '@/hooks/query/useUpdateStatusProject'
 import useAddVideo from '@/hooks/query/useAddVideo'
 import useGetAllProjects from '@/hooks/query/useGetAllProjects'
 import Loading from '../templates/Loading'
 import UploadFile from '../fields/UploadFIle'
 
-export default function FormUpdateProject({ data, show, close }: { data: any, show: boolean, close: () => void }) {
+export default function FormUpdateStatusProject({ data, show, close }: { data: any, show: boolean, close: () => void }) {
     const [selectedStatus, setSelectedStatus] = useState({ value: 1, label: 'تكتمل قريبا' })
     const [video, setVideo] = useState('')
     const [videoFile, setVideoFile] = useState()
@@ -38,7 +38,7 @@ export default function FormUpdateProject({ data, show, close }: { data: any, sh
         }
     }
     useGetAllProjects(status, 5, 1)
-    const updatestatus = useUpdateProject(
+    const updatestatus = useUpdateStatusProject(
         () => {
             close()
             setShowMessage(true)

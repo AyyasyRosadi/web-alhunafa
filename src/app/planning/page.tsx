@@ -19,17 +19,6 @@ export default function Page() {
     const [size, setSize] = useState<number>(5)
     const { data, loading } = useGetProjectByStatus(0, size, page)
     const total_pages = data?.total_pages
-    const closePdf = useCallback((event: KeyboardEvent) => {
-        if (event?.key === 'Escape') {
-            setShowModal(false)
-        }
-        // eslint-disable-next-line 
-    }, [showModal])
-    useEffect(() => {
-        document.addEventListener('keydown', closePdf)
-        return () => document.removeEventListener('keydown', closePdf)
-        // eslint-disable-next-line
-    }, [])
     return (
         <div className='font-bahij overflow-x-hidden'>
             <LandingPage image={Planning} title='بحاجة للتبرع' />
@@ -46,7 +35,7 @@ export default function Page() {
                 ))}
             </section>
             <Modal show={showModal} close={() => setShowModal(false)} title='تفاصيل المشروع' scroll>
-                <PdfViewer url={savePdf ? `${url}/${savePdf}`:`#`} />
+                <PdfViewer url={savePdf ? `${url}/${savePdf}` : `#`} />
             </Modal>
         </div>
     )
