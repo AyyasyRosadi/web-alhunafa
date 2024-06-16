@@ -23,7 +23,7 @@ export default function Page() {
           <h1 className='md:text-[40px] text-[35px]  text-base'>{data?.title}</h1>
           <div className='flex flex-wrap xl:justify-end gap-5 w-[100%]'>
             {data?.historical_projects?.map((val: any, id: number) => (
-              <div className='xl:w-[48%] w-[100%]'>
+              <div key={id}  className='xl:w-[48%] w-[100%]'>
                 <video className='w-[100%] h-[100%]' controls preload="none" controlsList='nodownload'>
                   <source src={val?.videoo ? `${url}/${val?.video}` : `#`} type="video/mp4" />
                 </video>
