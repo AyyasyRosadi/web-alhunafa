@@ -80,12 +80,13 @@ export default function FormEditProject({ show, close, data }: { show: boolean, 
     }
 
     const save = (e: FieldValues) => {
-        editProject?.mutate({ id: data.id, data: { ...e, lat: parseFloat(e.lat), long: parseFloat(e.long),type_id:`${e.type_id}` } })
+        editProject?.mutate({ id: data.id, data: { ...e, lat: parseFloat(e.lat), long: parseFloat(e.long), type_id: `${e.type_id}` } })
         // saveFile.mutate({ title, description: desc, lat: parseFloat(lat), long: parseFloat(long), proposal: proposal64.split(',')[1], image: image64.split(',')[1], type_id: typeId?.value })
         close()
     }
     useEffect(() => {
         method.reset({ title: data.title, description: data?.description, lat: data?.lat, long: data?.long, type_id: +data?.type_id })
+        // eslint-disable-next-line 
     }, [data])
     return (
         <>

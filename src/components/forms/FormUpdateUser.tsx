@@ -53,6 +53,7 @@ export default function FormUpdateUser({ data, show, close }: { data: any, show:
     }
     useEffect(() => {
         method.reset({ email: data.email, user_name: data.user_name })
+        // eslint-disable-next-line 
     }, [show])
     return (
         <>

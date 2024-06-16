@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import Modal from '../templates/Modal'
 import Message from '../templates/Message'
 import useDeleteProject from '@/hooks/query/useDeleteProject'
-import { typeOptions } from '../constant/Type'
 import useGetAllProjects from '@/hooks/query/useGetAllProjects'
 import Loading from '../templates/Loading'
 
@@ -37,6 +36,11 @@ export default function FormDeleteProject({ data, show, close }: { data: any, sh
         deleteProject.mutate(data.id)
         close()
     }
+    const typeOptions = [
+        { value: 1, label: 'ماركاس' },
+        { value: 2, label: 'مسجد' },
+        { value: 3, label: 'بئر' },
+    ]
     return (
         <>
             <Loading show={deleteProject.isPending} />

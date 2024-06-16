@@ -5,7 +5,6 @@ import LandingPage from '@/components/templates/LandingPage'
 import Card from '@/components/templates/Card'
 import useGetProjectByStatus from '@/hooks/query/useGetProjectByStatus'
 import { url } from '@/components/constant/Url'
-import { typeOptions } from '@/components/constant/Type'
 import { ProjectAttributes } from '@/type'
 import Pagination from '@/components/templates/Pagination'
 
@@ -15,6 +14,11 @@ export default function Page() {
     const [size, setSize] = useState<number>(5)
     const { data, loading } = useGetProjectByStatus(1, size, page)
     const total_pages = data?.total_pages
+    const typeOptions = [
+        { value: 1, label: 'ماركاس' },
+        { value: 2, label: 'مسجد' },
+        { value: 3, label: 'بئر' },
+    ]
     return (
         <div className='font-bahij overflow-x-hidden'>
             <LandingPage image={Onprogress} title='تكتمل قريبا' />
@@ -23,7 +27,7 @@ export default function Page() {
                 {data?.rows?.length !== 0 && data?.rows?.map((value: ProjectAttributes, id: number) => (
                     <Card key={id} src={value?.image ? `${url}/${value.image}`:`#`} title={value.title}>
                         <>
-                            <h1 className='text-center text-base mb-3'>( {typeOptions?.find((val) => val.value === `${value.type_id}`)?.label} )</h1>
+                            <h1 className='text-center text-base mb-3'>( {typeOptions?.find((val) => val.value === +value.type_id)?.label} )</h1>
                             <h1 className='text-right'>{value.description}</h1>
                         </>
                     </Card>

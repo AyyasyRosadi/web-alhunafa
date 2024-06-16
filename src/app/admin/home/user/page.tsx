@@ -1,10 +1,9 @@
+ /* eslint-disable */
 'use client'
 import React, { useState } from 'react'
 import TableData from '../Table'
 import Loading from '@/components/templates/Loading'
 import { HiPencil, HiTrash } from 'react-icons/hi'
-import FormDeleteProject from '@/components/forms/FormDeleteProject'
-import FormUpdateStatusProject from '@/components/forms/FormUpdateStatusProject'
 import TextField from '@/components/fields/TextField'
 import useGetUserByUsrname from '@/hooks/query/useGetUserByUsrname'
 import useGetAllUser from '@/hooks/query/useGetAllUser'
