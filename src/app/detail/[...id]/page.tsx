@@ -15,6 +15,7 @@ const loaderProp = ({ src }: { src?: any }) => {
 export default function Page() {
   const { id } = useParams()
   const { data, loading } = useGetDetailProject(`${id}`)
+  console.log(data)
   return (
     <div className='font-bahij text-right'>
       <LandingPage title='تفاصيل المشروع' image={Project} />
