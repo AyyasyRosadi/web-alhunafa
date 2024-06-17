@@ -1,5 +1,5 @@
 'use client'
-import React, { Dispatch, SetStateAction, useState } from 'react'
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import Modal from '../templates/Modal'
 import Message from '../templates/Message'
 import Selector from '../fields/Selector'
@@ -13,9 +13,9 @@ import UploadFile from '../fields/UploadFIle'
 export default function FormUpdateStatusProject({ data, show, close }: { data: any, show: boolean, close: () => void }) {
     const [selectedStatus, setSelectedStatus] = useState({ value: 1, label: 'تكتمل قريبا' })
     const [video, setVideo] = useState('')
-    const [videoFile, setVideoFile] = useState()
+    const [videoFile, setVideoFile] = useState<any>()
     const [video64, setVideo64] = useState('')
-    const [imageFile, setImageFile] = useState('')
+    const [imageFile, setImageFile] = useState<any>()
     const [image, setImage] = useState('')
     const [image64, setImage64] = useState('')
     const [showMessage, setShowMessage] = useState(false)
@@ -48,6 +48,12 @@ export default function FormUpdateStatusProject({ data, show, close }: { data: a
                 setShowMessage(false)
                 setStatus(false)
             }, 3000)
+            setImage('')
+            setImage64('')
+            setVideo('')
+            setVideo64('')
+            setVideoFile(null)
+            setImageFile(null)
         },
         () => {
             close()
@@ -57,6 +63,12 @@ export default function FormUpdateStatusProject({ data, show, close }: { data: a
             setTimeout(() => {
                 setShowMessage(false)
             }, 3000)
+            setImage('')
+            setImage64('')
+            setVideo('')
+            setVideo64('')
+            setVideoFile(null)
+            setImageFile(null)
         }
     )
     const sendVideo = useAddVideo(
@@ -78,6 +90,16 @@ export default function FormUpdateStatusProject({ data, show, close }: { data: a
         sendVideo.mutate({ id: data?.id })
         close()
     }
+    useEffect(() => {
+        if(show){
+            setImage('')
+            setImage64('')
+            setVideo('')
+            setVideo64('')
+            setVideoFile(null)
+            setImageFile(null)
+        }
+    }, [show])
     return (
         <>
             <Loading show={updatestatus?.isPending || sendVideo?.isPending} />
