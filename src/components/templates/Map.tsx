@@ -74,7 +74,7 @@ export default function Map({ markers, centers }: { markers: any, centers?: any 
       {
         selectedMarker && (
           <InfoWindow  position={{ lat: selectedMarker.position.lat, lng: selectedMarker.position.lng }} onCloseClick={handleCloseInfoWindow}>
-            <div className="text-right font-bahij cursor-pointer" onClick={() => navigate.push(`/detail/${selectedMarker?.id}`)}>
+            <div className="text-right font-bahij cursor-pointer" onClick={() => navigate.replace(`/detail/${selectedMarker?.id}`)}>
               <h2 className="text-base text-lg mb-2">معلومة</h2>
               <div className="flex flex-col gap-2 w-72 bg-white z-10">
                 {selectedMarker?.image ?
