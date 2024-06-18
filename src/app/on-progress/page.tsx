@@ -27,7 +27,6 @@ export default function Page() {
                     <Card key={id} src={value?.image ? `${url}/${value.image}`:`#`} title={value.title} location={`/detail/${value?.id}`}>
                         <>
                             <h1 className='text-center text-base mb-3'>( {typeOptions?.find((val) => val.value === +value.type_id)?.label} )</h1>
-                            <h1 className='text-right'>{value.description}</h1>
                         </>
                     </Card>
                 ))}

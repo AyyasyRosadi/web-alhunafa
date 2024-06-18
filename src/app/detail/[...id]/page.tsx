@@ -9,7 +9,7 @@ import { url } from '@/components/constant/Url'
 import loadingImage from "@/assets/images/icon/loading.png"
 
 
-const newUrl = 'https://api-alhunafa.diyaproject.id/stream'
+// const newUrl = 'https://api-alhunafa.diyaproject.id/stream'
 
 const loaderProp = ({ src }: { src?: any }) => {
   return src;
@@ -31,17 +31,6 @@ export default function Page() {
                 <div key={id} className='xl:w-[48%] w-[100%]'>
                   <video className='w-[100%] h-[100%]' controls preload="none" controlsList='nodownload'>
                     <source src={val?.video ? `${url}/${val?.video}` : `#`} type="video/mp4" />
-                  </video>
-                </div>
-              ))
-              :
-              <Image loading="lazy" src={loadingImage} alt="" className='w-12 h-12 animate-spin' />
-            }
-            {data ?
-              data?.historical_projects?.map((val: any, id: number) => (
-                <div key={id} className='xl:w-[48%] w-[100%]'>
-                  <video className='w-[100%] h-[100%]' controls preload="none" controlsList='nodownload'>
-                    <source src={val?.video ? `${newUrl}/${val?.video}` : `#`} type="video/mp4" />
                   </video>
                 </div>
               ))
