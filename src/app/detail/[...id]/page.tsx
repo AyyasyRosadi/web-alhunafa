@@ -29,7 +29,7 @@ export default function Page() {
             {data ?
               data?.historical_projects?.map((val: any, id: number) => (
                 <div key={id} className='xl:w-[48%] w-[100%]'>
-                  <video className='w-[100%] h-[100%]' controls preload="none" controlsList='nodownload'>
+                  <video className='w-[100%] h-[100%]' controls preload="none" controlsList='nodownload' loop>
                     <source src={val?.video ? `${url}/stream/${val?.video}` : `#`} type="video/mp4" />
                   </video>
                 </div>
