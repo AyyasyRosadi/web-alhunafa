@@ -24,7 +24,7 @@ export default function Page() {
             <LandingPage image={Onprogress} title='تكتمل قريبا' />
             <section className='p-[5%] flex flex-wrap justify-end items-start gap-5'>
                 {data?.rows?.length !== 0 && data?.rows?.map((value: ProjectAttributes, id: number) => (
-                    <Card key={id} src={value?.image ? `${url}/${value.image}`:`#`} title={value.title} location={`/detail/${value?.id}`}>
+                    <Card key={id} src={value?.image ? `${url}/file/${value.image}`:`#`} title={value.title} location={`/detail/${value?.id}`}>
                         <>
                             <h1 className='text-center text-base mb-3'>( {typeOptions?.find((val) => val.value === +value.type_id)?.label} )</h1>
                         </>

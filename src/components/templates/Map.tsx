@@ -78,7 +78,7 @@ export default function Map({ markers, centers }: { markers: any, centers?: any 
               <h2 className="text-base text-lg mb-2">معلومة</h2>
               <div className="flex flex-col gap-2 w-72 bg-white z-10">
                 {selectedMarker?.image ?
-                  <Image loading="lazy" src={`${url}/${selectedMarker?.image}`} loader={loaderProp} width={1000} height={1000} alt="image" className="w-72 h-40" />
+                  <Image loading="lazy" src={`${url}/file/${selectedMarker?.image}`} loader={loaderProp} width={1000} height={1000} alt="image" className="w-72 h-40" />
                   :
                   <Image loading="lazy" src={loadingImage} alt="" className='w-12 h-12 animate-spin' />
                 }

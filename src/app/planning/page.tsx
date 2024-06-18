@@ -37,7 +37,7 @@ export default function Page() {
                 <Pagination noOptions page={page} allPage={total_pages} setPage={setPage} value={size} setValue={(data) => setSize(parseInt(data.value as string))} />
             </div>
             <Modal show={showModal} close={() => setShowModal(false)} title='تفاصيل المشروع' scroll>
-                <PdfViewer url={savePdf ? `${url}/${savePdf}` : `#`} />
+                <PdfViewer url={savePdf ? `${url}/file/${savePdf}` : `#`} />
             </Modal>
         </div>
     )
