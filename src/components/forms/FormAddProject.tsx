@@ -25,13 +25,13 @@ export default function FormAddProject({ show, close }: { show: boolean, close: 
         mode: 'all',
         resolver: yupResolver(
             yup.object().shape({
-                title: yup.string().required(),
-                description: yup.string().min(8, 'min 8 characters').required(),
-                lat: yup.string().required(),
-                long: yup.string().required(),
-                proposal: yup.string().required(),
-                image: yup.string().required(),
-                type_id: yup.number().required(),
+                title: yup.string().max(255,"Max 255 Character").required("Cannot Empty"),
+                description: yup.string().min(8, 'min 8 characters').required("Cannot Empty"),
+                lat: yup.string().required("Cannot Empty"),
+                long: yup.string().required("Cannot Empty"),
+                proposal: yup.string().required("Cannot Empty"),
+                image: yup.string().required("Cannot Empty"),
+                type_id: yup.number().required("Cannot Empty"),
             })
         )
     })

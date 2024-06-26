@@ -76,6 +76,7 @@ export default function FormUpdateStatusProject({ data, show, close }: { data: a
     const sendVideo = useAddVideo(
         videoFile!,
         () => {
+            console.log(data?.id)
             updatestatus.mutate({ id: data?.id, data: { status: selectedStatus?.value, image: image64.split(',')[1] } })
         },
         () => {
@@ -89,6 +90,7 @@ export default function FormUpdateStatusProject({ data, show, close }: { data: a
         }
     )
     const update = () => {
+        console.log(data?.id)
         sendVideo.mutate({ id: data?.id })
         close()
     }

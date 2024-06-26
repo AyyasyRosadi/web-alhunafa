@@ -19,6 +19,7 @@ export default function Page() {
         { value: 2, label: 'مسجد' },
         { value: 3, label: 'بئر' },
     ]
+    console.log(data)
     return (
         <div className='font-bahij overflow-x-hidden'>
             <LandingPage image={Onprogress} title='تكتمل قريبا' />
