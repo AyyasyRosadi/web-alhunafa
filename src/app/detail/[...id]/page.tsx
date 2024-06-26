@@ -24,17 +24,22 @@ export default function Page() {
       <LandingPage title='تفاصيل المشروع' image={Project} />
       <section className='p-[5%] flex flex-wrap justify-end gap-5'>
         <div className='flex flex-col items-end gap-7 w-[100%]'>
-          <h1 className='md:text-[40px] text-[35px]  text-base'>{data?.title}</h1>
+          <h1 className='md:text-4xl text-3xl  text-base'>{data?.title}</h1>
           <div className='flex flex-wrap xl:justify-end gap-5 w-[100%]'>
             {data ?
-              data?.historical_projects?.map((val: any, id: number) => (
-                <div key={id} className='xl:w-[48%] w-[100%]'>
-                  <video className='w-[100%] h-[100%]' controls preload="none" controlsList='nodownload'
-                  >
-                    <source src={val?.video ? `${url}/file/${val?.video}` : `#`} type="video/mp4" />
-                  </video>
-                </div>
-              ))
+              data?.historical_projects?.map((val: any, id: number) => {
+                return val.video ?
+                  <div key={id} className='xl:w-[48%] w-[100%]'>
+                    <video className='w-[100%] h-[100%]' controls preload="none" controlsList='nodownload'
+                    >
+                      <source src={val?.video ? `${url}/file/${val?.video}` : `#`} type="video/mp4" />
+                    </video>
+                  </div>
+                  :
+                  <Image loading="lazy" src={loadingImage} alt="" className='w-12 h-12 animate-spin' />
+              }
+
+              )
               :
               <Image loading="lazy" src={loadingImage} alt="" className='w-12 h-12 animate-spin' />
             }

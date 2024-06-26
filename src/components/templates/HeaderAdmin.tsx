@@ -46,7 +46,7 @@ export default function HeaderAdmin({ children }: { children: ReactNode }) {
                     </div>
                 </div>
             </div>
-            <div className={`fixed top-[12vh] left-0 ${showMenu ? 'w-[85vw]' : 'w-screen'} transition-all ease-in-out duration-300 h-[88vh] p-[5%]`}>
+            <div className={`fixed top-[12vh] left-0 ${showMenu ? 'w-[85vw]' : 'w-screen'} transition-all ease-in-out duration-300 h-[88vh] p-[5%] overflow-y-auto scrollbar-hide`}>
                 {children}
             </div>
         </div>

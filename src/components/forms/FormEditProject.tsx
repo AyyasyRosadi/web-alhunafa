@@ -12,6 +12,7 @@ import SelectForm from '../fields/SelectForm'
 import useEditProject from '@/hooks/query/useEditProject'
 import UploadFile from '../fields/UploadFIle'
 import TextAreaForm from '../fields/TextAreaForm'
+import { useCheckExstention } from '@/hooks/useCheckExstention'
 
 export default function FormEditProject({ show, close, data }: { show: boolean, close: () => void, data: any }) {
     const typeOptions = [
@@ -69,7 +70,8 @@ export default function FormEditProject({ show, close, data }: { show: boolean, 
     const convertToBase64 = (event: React.ChangeEvent<HTMLInputElement>, setValue: Dispatch<SetStateAction<string>>, setBase64: Dispatch<SetStateAction<string>>, key: any) => {
         setValue(event?.target?.value)
         const file = event!.target!.files![0];
-        if (file) {
+        const validate = useCheckExstention(file,key)
+        if (file && validate) {
             const reader: any = new FileReader();
             reader.onloadend = () => {
                 setBase64(reader.result);
@@ -81,7 +83,6 @@ export default function FormEditProject({ show, close, data }: { show: boolean, 
 
     const save = (e: FieldValues) => {
         editProject?.mutate({ id: data.id, data: { ...e, lat: parseFloat(e.lat), long: parseFloat(e.long), type_id: `${e.type_id}` } })
-        // saveFile.mutate({ title, description: desc, lat: parseFloat(lat), long: parseFloat(long), proposal: proposal64.split(',')[1], image: image64.split(',')[1], type_id: typeId?.value })
         close()
     }
     useEffect(() => {

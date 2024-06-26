@@ -43,7 +43,7 @@ export function Location() {
 
 export default function TableData({ title, clickAdd, children, data, head, calculate, filters, noButton, buttonName, pages }: TableData): ReactNode {
     return (
-        <div className='flex flex-col w-[95%] items-end'>
+        <div className='flex flex-col w-[95%] items-end overflow-y-auto'>
             <Location />
             <div className='border bg-white px-7 py-10 full rounded-sm shadow-md mt-[2vh] w-[100%]'>
                 <div className='flex justify-between mb-5 h-[10%]'>

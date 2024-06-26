@@ -4,7 +4,7 @@ import { getSession, signOut } from "next-auth/react";
 
 const api = axios.create({
     baseURL: 'https://api-alhunafa.diyaproject.id',
-    // baseURL:'http://192.168.1.13:8080',
+    // baseURL:'http://localhost:8080',
     
 })
 

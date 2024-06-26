@@ -13,6 +13,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import SelectForm from '../fields/SelectForm'
 import TextAreaForm from '../fields/TextAreaForm'
+import { useCheckExstention } from '@/hooks/useCheckExstention'
 
 export default function FormAddProject({ show, close }: { show: boolean, close: () => void }) {
     const typeOptions = [
@@ -76,7 +77,8 @@ export default function FormAddProject({ show, close }: { show: boolean, close: 
     const convertToBase64 = (event: React.ChangeEvent<HTMLInputElement>, setValue: Dispatch<SetStateAction<string>>, setBase64: Dispatch<SetStateAction<string>>, key: any) => {
         setValue(event?.target?.value)
         const file = event!.target!.files![0];
-        if (file) {
+        let validate = useCheckExstention(file,key)
+        if (file && validate) {
             const reader: any = new FileReader();
             reader.onloadend = () => {
                 setBase64(reader.result);
