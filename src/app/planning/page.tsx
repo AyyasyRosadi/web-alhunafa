@@ -29,7 +29,7 @@ export default function Page() {
             <LandingPage image={Planning} title='بحاجة للتبرع' />
             <section className='px-[5%] py-[3%] flex flex-wrap justify-end items-center gap-5'>
                 {data?.rows?.length !== 0 && data?.rows?.map((value: ProjectAttributes, id: number) => (
-                    <div onClick={() => {
+                    <div key={id} onClick={() => {
                         setSavePdf(value.proposal)
                         setShowModal(true)
                     }} className="relative flex flex-col px-4 py-6 text-gray-700 bg-white shadow-xl bg-clip-border rounded-xl xl:w-[32%] md:w-[45%] h-[35rem] hover:scale-105 transition-all ease-in-out duration-300 cursor-pointer overflow-y-auto scrollbar-hide">

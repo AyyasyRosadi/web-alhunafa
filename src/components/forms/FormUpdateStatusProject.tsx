@@ -26,7 +26,7 @@ export default function FormUpdateStatusProject({ data, show, close }: { data: a
         { value: 1, label: 'تكتمل قريبا' },
         { value: 2, label: 'تم تنفيذ المشروع' },
     ]
-    const handleFile = (event: React.ChangeEvent<HTMLInputElement>, setValue: Dispatch<SetStateAction<string>>, setBase64: Dispatch<SetStateAction<string>>, setFile: any,type:string) => {
+    const HandleFile = (event: React.ChangeEvent<HTMLInputElement>, setValue: Dispatch<SetStateAction<string>>, setBase64: Dispatch<SetStateAction<string>>, setFile: any,type:string) => {
         setValue(event?.target?.value)
         const file: any = event!.target!.files![0];
         let validate = useCheckExstention(file,type)
@@ -109,8 +109,8 @@ export default function FormUpdateStatusProject({ data, show, close }: { data: a
             <Modal title='نموذج إضافة مشروع' show={show} close={close} scroll>
                 <div className='flex flex-col justify-between gap-3'>
                     <Selector instanceId='select-status' title='على التقدم' value={selectedStatus} setValue={setSelectedStatus} options={optionsStatus} />
-                    <TextField right id='video' title='فيديو' type='file' value={video} setValue={(event: any) => handleFile(event, setVideo, setVideo64, setVideoFile,'video')} />
-                    <UploadFile title='صورة' preview={image64} value={image} setValue={(event: any) => handleFile(event, setImage, setImage64, setImageFile,'image')} remove={() => {
+                    <TextField right id='video' title='فيديو' type='file' value={video} setValue={(event: any) => HandleFile(event, setVideo, setVideo64, setVideoFile,'video')} />
+                    <UploadFile title='صورة' preview={image64} value={image} setValue={(event: any) => HandleFile(event, setImage, setImage64, setImageFile,'image')} remove={() => {
                         setImage('')
                         setImage64('')
                     }} />

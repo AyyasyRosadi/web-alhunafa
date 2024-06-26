@@ -67,7 +67,7 @@ export default function FormEditProject({ show, close, data }: { show: boolean, 
             setImage64('')
         }
     )
-    const convertToBase64 = (event: React.ChangeEvent<HTMLInputElement>, setValue: Dispatch<SetStateAction<string>>, setBase64: Dispatch<SetStateAction<string>>, key: any) => {
+    const ConvertToBase64 = (event: React.ChangeEvent<HTMLInputElement>, setValue: Dispatch<SetStateAction<string>>, setBase64: Dispatch<SetStateAction<string>>, key: any) => {
         setValue(event?.target?.value)
         const file = event!.target!.files![0];
         const validate = useCheckExstention(file,key)
@@ -100,7 +100,7 @@ export default function FormEditProject({ show, close, data }: { show: boolean, 
                     <TextForm method={method} methodName='lat' right id='add-lat' title='خط العرض / Lat' />
                     <TextForm method={method} methodName='long' right id='add-long' title='خط الطول / Long' />
                     <SelectForm instanceId='add-type' title='نوع' method={method} methodName='type_id' options={typeOptions} />
-                    <UploadFile title='صورة' preview={image64} value={image} setValue={(event: any) => convertToBase64(event, setImage, setImage64, 'image')} remove={() => {
+                    <UploadFile title='صورة' preview={image64} value={image} setValue={(event: any) => ConvertToBase64(event, setImage, setImage64, 'image')} remove={() => {
                         setImage('')
                         setImage64('')
                     }} />
