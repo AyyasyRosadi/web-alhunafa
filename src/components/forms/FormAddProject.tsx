@@ -17,7 +17,7 @@ import { useCheckExstention } from '@/hooks/useCheckExstention'
 
 export default function FormAddProject({ show, close }: { show: boolean, close: () => void }) {
     const typeOptions = [
-        { value: 1, label: 'ماركاس' },
+        { value: 1, label: 'مركز' },
         { value: 2, label: 'مسجد' },
         { value: 3, label: 'بئر' },
     ]

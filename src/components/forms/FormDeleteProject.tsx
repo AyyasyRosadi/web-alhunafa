@@ -37,7 +37,7 @@ export default function FormDeleteProject({ data, show, close }: { data: any, sh
         close()
     }
     const typeOptions = [
-        { value: 1, label: 'ماركاس' },
+        { value: 1, label: 'مركز' },
         { value: 2, label: 'مسجد' },
         { value: 3, label: 'بئر' },
     ]

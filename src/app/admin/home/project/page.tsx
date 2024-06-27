@@ -37,7 +37,7 @@ export default function Page() {
     const projects = keySearch?.length > 2 ? data : data?.rows
     const total_pages = keySearch?.length > 2 ? 1 : data?.total_pages
     const typeOptions = [
-        { value: 1, label: 'ماركاس' },
+        { value: 1, label: 'مركز' },
         { value: 2, label: 'مسجد' },
         { value: 3, label: 'بئر' },
     ]

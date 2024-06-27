@@ -21,7 +21,7 @@ export default function Page() {
     const { data, loading } = useGetProjectByStatus(2, size, page)
     const total_pages = data?.total_pages
     const typeOptions = [
-        { value: 1, label: 'ماركاس' },
+        { value: 1, label: 'مركز' },
         { value: 2, label: 'مسجد' },
         { value: 3, label: 'بئر' },
     ]
