@@ -13,7 +13,7 @@ export default function Footer() {
         <div className={`${notUsingHeader.includes(path) ? 'hidden':'block'} bg-base flex md:justify-between xl:items-center items-end xl:flex-row flex-col py-5 px-[5%] xl:gap-0 gap-5 text-white font-bahij `}>
             <div className='xl:w-[33%] md:h-[50%] w-[100%] flex items-end flex-col text-right'>
                 <h1 className='md:text-[30px] text-[20xp] text-right'>القائمة الرئيسية</h1>
-                <h1 className='md:text-[15px] text-[10px]'>مدينة ماتارام جزيرة لومبوك محافطة نوسا تنجارى الغربية حمهورية إندونيسيا.
+                <h1 className='md:text-[15px] text-[10px]'>مدينة ماتارام جزيرة لومبوك محافطة نوسا تنجارى الغربية جمهورية إندونيسيا.
                     في بداية انطلاقها أسست معهدا دراسيا تحت مسمى &quot;معهد أبو هريرة الإسلامي&quot; ثم حصلت على اعتماد من قبل وزارة الخارجية الكويتية تحت رقم 3560 عام 2019 م</h1>
             </div>
             <div className='xl:w-[33%] md:h-[50%] w-[100%] flex flex-col md:items-start items-end'>
