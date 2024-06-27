@@ -11,7 +11,7 @@ export default function Page() {
         <div className='font-bahij overflow-x-hidden'>
             <LandingPage image={Buildings} title='معلومات عنا' />
             <section className="relative w-[100vw] p-[5%] text-right flex flex-col items-end gap-10">
-                <h1 className='md:text-[50px] text-[20px] text-base'>نشاة المؤسسة</h1>
+                <h1 className='md:text-[50px] text-[20px] text-base'>نشأة المؤسسة</h1>
                 <div className='flex md:flex-row flex-col-reverse justify-between items-center w-[100%] h-[60%] gap-5'>
                     <div className='flex flex-col gap-3'>
                         <p dir='rtl'>
